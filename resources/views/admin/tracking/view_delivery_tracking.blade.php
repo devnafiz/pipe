@@ -52,7 +52,7 @@ Delivery List
                             
                             
                             <td>
-                                 <button class="btn btn-outline-primary"><a href="{{url('/admin/edit-delivery-tracking/'.$delivery->id)}}"> <i class="fa fa-edit"></i></a></button>
+                                 <!-- <button class="btn btn-outline-primary"><a href="{{url('/admin/edit-delivery-tracking/'.$delivery->id)}}"> <i class="fa fa-edit"></i></a></button> -->
                              <a rel="{{$delivery->id}}"  rel1="delete-delivery" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delDelivery"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>

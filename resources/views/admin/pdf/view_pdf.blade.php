@@ -39,7 +39,7 @@ Product List
                          @foreach($pdfDetails as $pdf)
                         <tr>
                             <td>{{$pdf->id}}</td>
-                            <td><a href="{{asset('/images/backend_image/pdf/'.$pdf->pdf_file)}}" target="_blank"><img src="{{asset('/images/backend_image/pdf/'.$pdf->pdf_file)}}" width="48" ></a></td>
+                            <td><a href="{{asset('/images/backend_image/pdf/'.$pdf->pdf_file)}}" target="_blank"><img src="{{asset('/images/backend_image/pdf/pdf.png')}}" width="48"  height="48"></a></td>
                             <td>{{$pdf->pdf_name}}</td>
                             
                             

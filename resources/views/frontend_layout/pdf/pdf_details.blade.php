@@ -28,17 +28,19 @@
 							<ul class="detail-list">
 								{{$pdfDetails->Description}}
 							</ul>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
       		<!--Lower Section-->
-      		<!-- <div class="lower-section">
-				<h2>Our Challenge</h2>
-				<div class="text">
-					
+      		<div class="lower-section">
+				<h2>Download here</h2>
+				<div >
+					<a href="{{asset('/images/backend_image/pdf/'.$pdfDetails->pdf_file)}}" class="btn btn-block" target="_blank">Download Pdf</a>
 				</div>
-			</div> -->
+			</div>
        </div>
     </section>         
 
