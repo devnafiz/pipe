@@ -187,7 +187,24 @@ class AdminController extends Controller
      public function sendMail(Request $request,$id){
         if($request->isMethod('post')){
             $data=$request->all();
-            echo "<pre>";print_r($data);die;   
+
+            $dataDetails=array(
+            
+            'email'=>$request->email,
+            'content'=>$request->content,
+            
+
+      );
+            Mail::send('frontend_layout.contact.email',$dataDetails,function($message)use($dataDetails){
+               $message->from('nafiz016@gmail.com');
+
+                $message->to($dataDetails['email'])->subject('Contact Form Query');
+            });
+
+            
+            //echo "<pre>";print_r($data);die; 
+        return redirect()->back()->with('flash_message','Sent Mail Successfully');
+
 
         }
 

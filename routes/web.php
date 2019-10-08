@@ -27,6 +27,7 @@ Route::post('/post-contact','ContactUsController@postContact');
 
 //product view
 Route::get('/products','FrontendController@viewProduct');
+Route::get('/products/{slug}','FrontendController@singleProductView');
 //gallery
 Route::get('/gallery','FrontendController@viewGallery');
 Route::get('/view-gallery/{slug}','FrontendController@singleGallery');
@@ -136,6 +137,7 @@ Route::group(['middleware'=>['adminLogin']],function(){
       //consultation
       Route::get('/admin/view-consultation','ConsultationController@viewConsultation');
       Route::get('/admin/delete-consultation/{id}','ConsultationController@delConsultation');
+      Route::match(['get','post'],'/admin/send-mail/{id}','ConsultationController@sendMail');
 
 
 

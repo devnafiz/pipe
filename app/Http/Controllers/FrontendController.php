@@ -16,6 +16,7 @@ use App\TruckRent;
 use App\Pdfdownload;
 use App\PdfInformation;
 use App\Consultation;
+use Mail;
 use Validator;
 
 
@@ -58,6 +59,12 @@ class FrontendController extends Controller
      return view('frontend_layout.product.shop')->with(compact('products'));
 
     }
+
+    public function singleProductView($slug){
+      $productDetails=Product::where('slug',$slug)->first();
+
+      return view('frontend_layout.product.single_product')->with(compact('productDetails'));
+    }
     //gallery
 
     public function viewGallery(Request $request){
@@ -77,16 +84,62 @@ class FrontendController extends Controller
     public function viewPreOder(Request $request){
       if($request->isMethod('post')){
 
-        Validator::make($request->all(),[
+       $validator=Validator::make($request->all(),[
            'name' => 'required|max:255',
            'email' => 'required|email',
            'phone'=>'required',
-
+           'company_name'=>'required|max:255',
+            'company_address'=>'required',
+            'city_name'=>'required|max:255',
+            'product_name'=>'required',
+            'qty'=>'required',
+            'destination_address'=>'required',
+            'comment'=>'required'
            ]);
+       if($validator->passes()){
 
-          if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+
+                 $preOrder= new PreOrder;
+                    $preOrder->name=$request->name;
+                    $preOrder->email=$request->email;
+                    $preOrder->phone=$request->phone;
+                    $preOrder->company_name=$request->company_name;
+                    $preOrder->company_address=$request->company_address;
+                    $preOrder->city_name=$request->city_name;
+                    $preOrder->product_name=$request->product_name;
+                    $preOrder->qty=$request->qty;
+                   
+
+                    $preOrder->destination_address=$request->destination_address;
+                    $preOrder->comment=$request->comment;
+                    
+                    $preOrder->save();
+                    
+
+         $dataDetails=array(
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'company_name'=>$request->company_name,
+            'company_address'=>$request->company_address,
+            'city_name'=>$request->city_name,
+            'product_name'=>$request->product_name,
+            'qty'=>$request->qty,
+            'destination_address'=>$request->destination_address,
+            'comment'=>$request->comment
+
+      );
+       Mail::send('frontend_layout.contact.preOrder_mail',$dataDetails,function($message)use($dataDetails){
+            $message->from($dataDetails['email']);
+            $message->to('nafiz016@gmail.com')->subject("PreOrder Email ");
+
+       });
+       return redirect()->back()->with('success', 'Thanks for contacting us!');
+       }
+        return redirect()->back()->with('success', 'Something is Wrong Now!');
+        //   if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
 
        // $data=$request->all();
         //echo "<pre>";print_r($data);die;

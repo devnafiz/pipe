@@ -132,7 +132,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
                                         </div>
-                                        <textarea class="form-control" placeholder="Enter Your Message" required></textarea>
+                                        <textarea class="form-control"  name="comment"placeholder="Enter Your Message" required></textarea>
                                     </div>
                                 </div>
 

@@ -46,7 +46,7 @@ Product List
                            
                            
                             <td>{{$consultation->name}}</td>
-                             <td>{{$consultation->email}}</td>
+                             <td><a href="{{url('/admin/send-mail/'.$consultation->id)}}">{{$consultation->email}}</a></td>
                             <td>{{$consultation->phone}}</td>
                             <td>{{$consultation->company_address}}</td>
                              <td>{{$consultation->date}}</td>

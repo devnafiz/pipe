@@ -21,6 +21,12 @@
                   <input type="text" name="product_name" id="product_name" class="form-control" >
                 </div>
               </div>
+              <div class="form-group">
+                <label class="control-label">Product url</label>
+                <div class="controls">
+                  <input type="text" name="slug" id="slug" class="form-control" required="" >
+                </div>
+              </div>
               
               <div class="form-group">
                 <label class="control-label">product Code</label>

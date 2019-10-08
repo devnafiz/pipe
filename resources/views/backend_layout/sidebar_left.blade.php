@@ -110,7 +110,7 @@
               </a>
               <div class="collapse" id="Other">
                 <ul class="nav flex-column sub-menu">
-                 
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-contact')}}"> Contact email</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-subscriber')}}"> Subscriber email</a></li>
                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-consultation')}}"> Consultation</a></li>
                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-truck-rent')}}"> Truck Rent</a></li>
