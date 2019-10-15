@@ -51,7 +51,7 @@
                         <tr>
                             <td>Id</td>
                             <td>Job Title</td>
-                            <td>Job Description</td>
+                            <td>Job Requirement</td>
                             <td>Option</td>
                         </tr>
                     </thead>
@@ -61,9 +61,9 @@
                         <tr>
                             <td>{{$job->id}}</td>
                             <td>{{$job->job_title}}</td>
-                            <td>{{$job->job_description}}</td>
+                            <td>{{$job->job_requirement}}</td>
                             <td>
-                                <a href="{{url('/details-career/'.$job->id)}}" class="btn btn-primary" target="_blank">View</a>
+                                <a href="{{url('/details-career/'.$job->id)}}" class="btn btn-primary" target="_blank" style="background:#13b5ea;" >View</a>
                                  <!-- <a href="#" class="btn btn-primary">Apply</a> -->
 
                             </td>

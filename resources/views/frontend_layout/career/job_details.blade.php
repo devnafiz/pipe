@@ -53,27 +53,56 @@
           </div>
        
                     <hr/>
-                    <h4>job Title</h4>
-                    <p>
-                      <b>
-                       {{$careerDetails->job_title}}
-                      </b>
-                    </p>
-                    <h4>Job Description</h4>
-                    <p> {{$careerDetails->job_description}}</p>
-                    <h4>Responsibilities</h4>
-                    <p>{{$careerDetails->job_requirement}}</p>
-                    <h4>Required Skills &amp; Qualifications</h4>
-                    <p>{{$careerDetails->skill}}
-            </p>
+                    
 
-            <h4>Vacancy No</h4>
-                    <p>{{$careerDetails->vacancy_no}}
-            </p>
 
-            <h4>Valid date</h4>
-                    <p>{{$careerDetails->valid_date}}
-            </p>
+
+                   <table class="table table-bordered">
+                      <tbody>
+                          <tr>
+                            <th>Feature</th>
+                             <th>Description</th>
+                             
+                              
+                          </tr>
+                          <tr>
+                            
+                              <td>Job Title</td>
+                              <td> {{$careerDetails->job_title}}</td>
+                              
+                          </tr>
+                          <tr>
+                            
+                              <td>Job Description</td>
+                              <td>{{$careerDetails->job_description}}</td>
+                              
+                          </tr>
+                          <tr>
+                            
+                              <td>Requirement</td>
+                              <td>{{$careerDetails->job_requirement}}</td>
+                              
+                          </tr>
+                          <tr>
+                            
+                              <td>Required Skills &amp; Qualifications</td>
+                              <td>{{$careerDetails->skill}}</td>
+                              
+                          </tr>
+                          <tr>
+                            
+                              <td>Vacancy No</td>
+                              <td>{{$careerDetails->vacancy_no}}</td>
+                              
+                          </tr>
+                          <tr>
+                            
+                              <td>Valid date</td>
+                              <td>{{$careerDetails->valid_date}}</td>
+                              
+                          </tr>
+                      </tbody>
+                  </table>
 
 
                   </div>

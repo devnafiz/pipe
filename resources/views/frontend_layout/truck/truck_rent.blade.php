@@ -49,8 +49,8 @@ shop
                <!--  <div class="form-column column col-lg-8 col-md-8 col-sm-12 "> -->
 
 
-                	 <div class="row">
-                        <div class="col-xs-12 text-center">
+                	
+                        <div class="col-md-10 text-center">
                             <div class="welcome_text">
                             <form action="{{url('/truck-rent')}}" method="post">
                                 {{csrf_field()}}
@@ -82,7 +82,7 @@ shop
                                     </div>
                                     <div class="input-group form-group">
                                        
-                                       <textarea name="quoate" class="" placeholder="Quoate For Rent" rows="4" cols="40" style="border: 1px solid #13b5ea">
+                                       <textarea name="quoate" class="" placeholder="Quoate For Rent" rows="4" cols="140" style="border: 1px solid #13b5ea">
                                           
                                        </textarea>
                                     </div>
@@ -96,8 +96,7 @@ shop
                         </div>
                     </div>
                 
-                   
-                </div>
+           
                 
             </div>
         </div>
@@ -203,10 +202,10 @@ shop
             padding: 0.375rem 0.75rem;
             font-size: 1.2rem;
             line-height: 1.6;
-            color: #28a745;
+            color: #2393e2;
             background-color: transparent;
             background-clip: padding-box;
-            border: 1px solid #28a745;
+            border: 1px solid #2393e2;
             border-radius: 0;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }

@@ -29,7 +29,7 @@ class ProductController extends Controller
          	$products->product_name= $data['product_name'];
          	$products->product_code= $data['product_code'];
             $products->slug= $data['slug'];
-         	$products->product_color= $data['product_color'];
+         	$products->additional_des= $data['additional_des'];
          	if(!empty($data['description'])){
                  $products->description= $data['description'];
          	}else{
@@ -102,7 +102,7 @@ class ProductController extends Controller
             }
 
 
-            Product::where('id',$id)->update(['product_name'=>$data['product_name'],'slug'=>$data['slug'],'product_code'=>$data['product_code'],'product_color'=>$data['product_color'],'description'=>$data['description'],'price'=>$data['price'],'image'=>$filename,'status'=>$status]);
+            Product::where('id',$id)->update(['product_name'=>$data['product_name'],'slug'=>$data['slug'],'product_code'=>$data['product_code'],'product_color'=>$data['product_color'],'description'=>$data['description'],'additional_des'=>$data['additional_des'],'price'=>$data['price'],'image'=>$filename,'status'=>$status]);
             return redirect()->back()->with('flash_message','Product update successfully!');
           
 

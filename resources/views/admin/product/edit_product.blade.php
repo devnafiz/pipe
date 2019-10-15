@@ -46,7 +46,13 @@
                   <input type="text" name="description" id="description" class="form-control" value="{{$productDetails->description}}">
                 </div>
               </div>
-              
+              <div class="form-group">
+                <label class="control-label">Additional Information</label>
+                <div class="controls">
+                  <textarea name="additional_des" class="form-control">{{$productDetails->additional_des}}"></textarea>
+                  
+                </div>
+              </div>
               
               <div class="form-group">
                 <label class="control-label">product price</label>

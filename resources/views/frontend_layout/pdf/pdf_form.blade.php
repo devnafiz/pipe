@@ -49,8 +49,8 @@ shop
                <!--  <div class="form-column column col-lg-8 col-md-8 col-sm-12 "> -->
 
 
-                	 <div class="row">
-                        <div class="col-xs-12 text-center">
+                	 
+                        <div class="col-md-10 text-center">
                             <div class="welcome_text">
                             <form action="{{url('/pdf-information/'.$pdfDetails->id)}}" method="post">
                                 {{csrf_field()}}
@@ -85,8 +85,7 @@ shop
                     </div>
                 
                    
-                </div>
-                
+               
             </div>
         </div>
     </section>
@@ -174,10 +173,10 @@ shop
             padding: 0.375rem 0.75rem;
             font-size: 1.2rem;
             line-height: 1.6;
-            color: #28a745;
+            color: #2393e2;
             background-color: transparent;
             background-clip: padding-box;
-            border: 1px solid #13b5ea;
+            border: 1px solid #2393e2;
             border-radius: 0;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
@@ -192,11 +191,11 @@ shop
             font-size: 1.5rem;
             font-weight: 700;
             line-height: 1.6;
-            color: #495057;
+            color: #2393e2;
             text-align: center;
             white-space: nowrap;
             background-color: #e9ecef;
-            border: 1px solid #ced4da;
+            border: 1px solid #2393e2;
             border-radius: 0;
         }
 	

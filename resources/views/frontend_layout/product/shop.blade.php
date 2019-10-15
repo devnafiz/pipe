@@ -87,14 +87,14 @@ shop
                                             <img src="{{asset('/images/backend_image/products/large/'.$product->image)}}" alt="" style="height: 200px;width: 200px;"  />
                                             <div class="overlay-box">
                                                 <ul class="cart-option">
-                                                    <li><a href="shop-single.html"><span class="flaticon-shopping-cart-of-checkered-design"></span></a></li>
+                                                   <!--  <li><a href="shop-single.html"><span class="flaticon-shopping-cart-of-checkered-design"></span></a></li> -->
                                                     <li><a href="{{asset('/images/backend_image/products/large/'.$product->image)}}" data-fancybox="images" data-caption="" class="link"><span class="icon fa fa-search"></span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="lower-content clearfix">
                                         	<div class="pull-left">
-                                            	<h6><a href="shop-single.html">{{$product->product_name}}</a></h6>
+                                            	<h6><a href="{{url('/products/'.$product->slug)}}">{{$product->product_name}}</a></h6>
                                             </div>
                                             <div class="pull-right">
                                             	<ul class="price">

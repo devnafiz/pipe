@@ -48,7 +48,7 @@
                             <div class="card-header p-0">
                                 <div class="bg-info text-white text-center py-2">
                                     <h3><i class="fa fa-envelope"></i> Pre Order Form</h3>
-                                    <p class="m-0">Can You Pre Order Here</p>
+                                    <p class="m-0">You Can Pre Order From Here</p>
                                 </div>
                             </div>
                             <div class="card-body p-3">
@@ -186,7 +186,7 @@
 @section('extra-js')
 <script type="text/javascript">
 	$(document).ready(function(){
-        alert('hi');
+        //alert('hi');
 
 	});
 

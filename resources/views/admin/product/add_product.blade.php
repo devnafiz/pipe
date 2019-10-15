@@ -34,12 +34,7 @@
                   <input type="text" name="product_code" id="product_code" class="form-control">
                 </div>
               </div>
-              <div class="form-group">
-                <label class="control-label">product Color</label>
-                <div class="controls">
-                  <input type="text" name="product_color" id="product_color" class="form-control">
-                </div>
-              </div>
+              
               <div class="form-group">
                 <label class="control-label">Description</label>
                 <div class="controls">
@@ -47,7 +42,13 @@
                 </div>
               </div>
               
-              
+              <div class="form-group">
+                <label class="control-label">Additional Information</label>
+                <div class="controls">
+                  <textarea name="additional_des" class="form-control"></textarea>
+                  
+                </div>
+              </div>
               <div class="form-group">
                 <label class="control-label">product price</label>
                 <div class="controls">

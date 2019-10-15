@@ -139,6 +139,13 @@ Route::group(['middleware'=>['adminLogin']],function(){
       Route::get('/admin/delete-consultation/{id}','ConsultationController@delConsultation');
       Route::match(['get','post'],'/admin/send-mail/{id}','ConsultationController@sendMail');
 
+      //news fotter 
+      Route::match(['get','post'],'/admin/add-news','NewsController@addNews');
+      Route::match(['get','post'],'/admin/edit-news/{id}','NewsController@editNews');
+      Route::get('/admin/news-list','NewsController@viewNews');
+      Route::get('/admin/news-details/{id}','NewsController@singleNews');
+      Route::get('/admin/delete-news/{id}','NewsController@delNews');
+
 
 
 
