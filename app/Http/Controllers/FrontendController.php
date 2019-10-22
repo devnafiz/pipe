@@ -17,6 +17,10 @@ use App\Pdfdownload;
 use App\PdfInformation;
 use App\Consultation;
 use Mail;
+use App\Testimonial;
+use Illuminate\Support\Facades\Input;
+
+use Image;
 use Validator;
 
 
@@ -24,8 +28,10 @@ class FrontendController extends Controller
 {
     public function index(Request $request){
       $slider=Banner::get();
+      $testimonials=Testimonial::where('status','1')->get();
+      //dd($testimonial);
 
-    	return view('index')->with(compact('slider'));
+    	return view('index')->with(compact('slider','testimonials'));
     }
 
 
@@ -325,4 +331,58 @@ class FrontendController extends Controller
       $pdfDetails=Pdfdownload::where('id',$id)->first();
       return view('frontend_layout.pdf.pdf_form')->with(compact('pdfDetails'));
     }
+
+
+    //add testimonial
+
+    public function addTestimonial(Request $request){
+
+      if($request->isMethod('post')){
+        $data=$request->all();
+
+         $validator = Validator::make($request->all(), [
+
+                    'name' => 'required|max:255',
+                    'email' => 'required|email',
+                    'phone' => 'required|min:2',
+                    'company_name' => 'required|max:300',
+                    
+
+
+                   ]);
+         if($validator->passes()){
+
+          $testimonial= new Testimonial;
+          $testimonial->name=$request->name;
+          $testimonial->email=$request->email;
+          $testimonial->phone=$request->phone;
+          $testimonial->company_name=$request->company_name;
+          if($request->hasFile('image')){
+            $image_tmp=Input::file('image');
+            if($image_tmp->isValid()){
+              $extension=$image_tmp->getClientOriginalExtension();
+              $filename=rand(111,99999).'.'.$extension;
+              $small_image_path ='images/backend_image/testimonial/small/'.$filename;
+              Image::make($image_tmp)->resize(150,150)->save($small_image_path);
+              $testimonial->image=$filename;
+
+            }
+          }
+          //$testimonial->image =$filename;
+            $testimonial->details=$request->details;
+            $testimonial->status=0;
+           $testimonial->save();
+           //return redirect()->b
+
+         }
+        
+
+        //dd($data);
+      }
+
+
+      return view('frontend_layout.testimonial.add_testimonial');
+
+    }
+    
 }

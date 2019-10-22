@@ -576,47 +576,29 @@
 						</div>
 						
 						<div class="single-vertical-carousel">
-							<!--Featured Block Two-->
-							<div class="testimonial-block">
-								<div class="inner-box">
-									<div class="author-info">
-										<div class="image">
-											<img src="images/resource/author-1.jpg" alt="" />
-										</div>
-										<h6>JOHN ABRAHAM</h6>
-										<div class="designation">Morris, CEO</div>
-									</div>
-									<div class="text">“ The first mate and his Skipper too will do their very best to make the man named Brady tropic island nest these are the voyages of the Starship Enterprise of a man named Brady tropic island nest these are the voyages.”</div>
-								</div>
-							</div>
+
+
 
 							<!--Featured Block Two-->
+							@foreach($testimonials as $testimonial)
 							<div class="testimonial-block">
 								<div class="inner-box">
 									<div class="author-info">
 										<div class="image">
-											<img src="images/resource/author-1.jpg" alt="" />
+											<img src="{{asset('images/backend_image/testimonial/small/'.$testimonial->image)}}" alt="" />
 										</div>
-										<h6>JOHN ABRAHAM</h6>
-										<div class="designation">Morris, CEO</div>
+										<h6>{{$testimonial->name}}</h6>
+										<div class="designation">{{$testimonial->company_name}}</div>
 									</div>
 									<div class="text">“ The first mate and his Skipper too will do their very best to make the man named Brady tropic island nest these are the voyages of the Starship Enterprise of a man named Brady tropic island nest these are the voyages.”</div>
 								</div>
 							</div>
+                           @endforeach
+							<!--Featured Block Two-->
+							
 
 							<!--Featured Block Two-->
-							<div class="testimonial-block">
-								<div class="inner-box">
-									<div class="author-info">
-										<div class="image">
-											<img src="images/resource/author-1.jpg" alt="" />
-										</div>
-										<h6>JOHN ABRAHAM</h6>
-										<div class="designation">Morris, CEO</div>
-									</div>
-									<div class="text">“ The first mate and his Skipper too will do their very best to make the man named Brady tropic island nest these are the voyages of the Starship Enterprise of a man named Brady tropic island nest these are the voyages.”</div>
-								</div>
-							</div>
+							
 
 						</div>
 						

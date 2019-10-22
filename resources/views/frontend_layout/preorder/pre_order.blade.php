@@ -46,7 +46,7 @@
                     	{{csrf_field()}}
                         <div class="card border-primary rounded-0">
                             <div class="card-header p-0">
-                                <div class="bg-info text-white text-center py-2">
+                                <div class="bg-info text-white text-center py-2" style="background-color:#13b5ea!important;">
                                     <h3><i class="fa fa-envelope"></i> Pre Order Form</h3>
                                     <p class="m-0">You Can Pre Order From Here</p>
                                 </div>
@@ -137,7 +137,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <input type="submit" value="Submit" class="btn btn-info btn-block rounded-0 py-2">
+                                    <input type="submit" value="Submit" class="btn btn-info btn-block rounded-0 py-2" style="background-color:#13b5ea!important;">
                                 </div>
                             </div>
 
