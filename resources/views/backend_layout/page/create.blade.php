@@ -13,7 +13,7 @@
 
 @section('content')
 
-  <form method="POST" action="{{ url('/pages')}}" >
+  <form method="POST" action="{{ url('/admin/pages')}}" >
     {{csrf_field()}}
    <div class="form-group">
      <label for="exampleInputPassword1">Title</label>

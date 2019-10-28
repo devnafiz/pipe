@@ -19,6 +19,7 @@ use App\Consultation;
 use Mail;
 use App\Testimonial;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 use Image;
 use Validator;
@@ -255,7 +256,7 @@ class FrontendController extends Controller
                     $consultations->date=$request->date;
                     
                     $consultations->save();
-                    return redirect()->back()->with('flash_message','Successfully has been sent');
+                    return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
 
                     }else{
                           return redirect()->back()->with('flash_message','Sorry  your Informationmay be  not valid');
@@ -383,6 +384,11 @@ class FrontendController extends Controller
 
       return view('frontend_layout.testimonial.add_testimonial');
 
+    }
+
+    public function thakyou(Request $request){
+
+      return view('thank_you');
     }
     
 }

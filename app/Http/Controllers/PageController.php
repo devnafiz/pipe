@@ -7,7 +7,7 @@ use App\Page;
 
 class PageController extends Controller
 {
-    public function page(Request $request){
+    public function addPage(Request $request){
 
     	if($request->isMethod('post')){
 

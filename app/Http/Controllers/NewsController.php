@@ -42,7 +42,7 @@ class NewsController extends Controller
                 $status=0;
     		}
 
-       News::where('id',$id)->update(['title'=>$data['title'],'icon'=>$data['icon'],'description'=>$data['description'],'status'=>$status])
+       News::where('id',$id)->update(['title'=>$data['title'],'icon'=>$data['icon'],'description'=>$data['description'],'status'=>$status]);
     	}
     	$newsDetails=News::where('id',$id)->first();
 

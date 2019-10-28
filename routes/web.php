@@ -43,6 +43,9 @@ Route::match(['get','post'],'/pdf-information/{id}','FrontendController@informat
 //testimonial
 Route::match(['get','post'],'/add-testimonial','FrontendController@addTestimonial');
 
+//Thank you Page
+Route::get('/thank-you','FrontendController@thakyou');
+
 
 
 
@@ -64,7 +67,7 @@ Route::group(['middleware'=>['adminLogin']],function(){
 
 
       //Pages 
-      Route::match(['get','post'],'/admin/pages','PageController@page');
+      Route::match(['get','post'],'/admin/pages','PageController@addPage');
       Route::get('/admin/view-page','PageController@viewPage');
       Route::match(['get','post'],'/admin/page-edit/{id}','PageController@editPage');
 
@@ -134,7 +137,11 @@ Route::group(['middleware'=>['adminLogin']],function(){
       Route::get('/admin/news-list','NewsController@viewNews');
       Route::get('/admin/news-details/{id}','NewsController@singleNews');
       Route::get('/admin/delete-news/{id}','NewsController@delNews');
+      //testimonial
 
+      Route::get('/admin/testimonial-list','TestimonialController@viewTestimonial');
+      Route::get('/admin/delete-testimonial/{id}','TestimonialController@delTest');
+      Route::get('/admin/update-testimonial-status/{id}/{status}','TestimonialController@updateTestimonialStatus');
 
 
 

@@ -3,7 +3,7 @@
 
 @section('title')
 
-NewsLetter List
+Testtimonial List
 
 @endsection
 
@@ -19,7 +19,7 @@ NewsLetter List
 
  <div class="card">
             <div class="card-body">
-              <h4 class="card-title">News list Footer</h4>
+              <h4 class="card-title">Testimonials</h4>
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
@@ -27,25 +27,38 @@ NewsLetter List
                       <thead>
                         <tr>
                             <th>Id #</th>
-                            <th>Title</th>
-                            <th>Icon</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Dtails</th>
                             <th>Status</th>
                             
                             <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
-                         @foreach($newsView as $news)
+                         @foreach($testimonials as $testimonial)
                         <tr>
-                            <td>{{$news->id}}</td>
-                            <td>{{$news->title}}</td>
-                            <td>{{$news->icon}}</td>
-                             <td>@if($news->status==1) Active @else Inactive @endif</td>
+                            <td>{{$testimonial->id}}</td>
+                            <td><img src="{{asset('images/backend_image/testimonial/small/'.$testimonial->image)}}" width="50px" height="50px"></td>
+                            <td>{{$testimonial->name}}</td>
+                            <td>{{$testimonial->email}}</td>
+                            <td>{{$testimonial->phone}}</td>
+                            <td>{{$testimonial->details}}</td>
+                             <td>@if($testimonial->status==1)
+                            <a href="{{url('/admin/update-testimonial-status/'.$testimonial->id.'/0')}}">  Active</a>
+
+                               @else
+
+                              <a href="{{url('/admin/update-testimonial-status/'.$testimonial->id.'/1')}}">  Inactive</a>
+
+                               @endif</td>
                             
                             
                             <td>
-                                 <button class="btn btn-outline-primary"><a href="{{url('/admin/edit-news/'.$news->id)}}"> <i class="fa fa-edit"></i></a></button>
-                             <a rel="{{$news->id}}"  rel1="delete-news" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delNews"><i class="fa fa-trash"></i></a>
+                                 
+                             <a rel="{{$testimonial->id}}"  rel1="delete-testimonial" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delTest"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

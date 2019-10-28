@@ -114,6 +114,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-subscriber')}}"> Subscriber email</a></li>
                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-consultation')}}"> Consultation</a></li>
                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-truck-rent')}}"> Truck Rent</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/testimonial-list')}}"> Testimonial</a></li>
                  
                 </ul>
               </div>
@@ -167,7 +168,7 @@
               <div class="collapse" id="news-layouts">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{url('/admin/add-news')}}">Add News</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-news')}}">News list</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('admin/news-list')}}">News list</a></li>
                   
                 </ul>
               </div>
