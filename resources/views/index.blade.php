@@ -185,7 +185,7 @@
    @foreach($testimonials as $testimonial)
 
                 <div class="team-member col-lg-3 col-md-6 col-sm-12">
-                	<div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                	<!-- <div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms"> -->
                     	
                         	<img src="{{asset('images/backend_image/testimonial/small/4403.png')}}" alt="" style="width: 75px;
     height: 75px;
@@ -204,7 +204,7 @@
                             <div class="text">As more and more people are turning to organic</div>
                             <h6><a href="team-single.html">David Warner</a></h6>
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 @endforeach
                 <!--Team Member-->
