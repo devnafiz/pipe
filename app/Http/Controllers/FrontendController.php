@@ -29,8 +29,9 @@ class FrontendController extends Controller
 {
     public function index(Request $request){
       $slider=Banner::get();
-      $testimonials=Testimonial::where('status','1')->get();
+      $testimonials=Testimonial::where('status','1')->orderBy('id','desc')->take(4)->get();
       //dd($testimonial);
+      //echo "<pre>";print_r($testimonials);die;
 
     	return view('index')->with(compact('slider','testimonials'));
     }
@@ -141,7 +142,7 @@ class FrontendController extends Controller
             $message->to('nafiz016@gmail.com')->subject("PreOrder Email ");
 
        });
-       return redirect()->back()->with('success', 'Thanks for contacting us!');
+       return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
        }
         return redirect()->back()->with('success', 'Something is Wrong Now!');
         //   if ($validator->fails()) {
@@ -210,7 +211,7 @@ class FrontendController extends Controller
                     $truckrent->destination=$request->destination;
                     $truckrent->quoate=$request->quoate;
                     $truckrent->save();
-                    return redirect()->back()->with('flash_message','Successfully has been sent');
+                     return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
 
                     }else{
                           return redirect()->back()->with('flash_message','Sorry  your Informationmay be  not valid');
@@ -389,6 +390,11 @@ class FrontendController extends Controller
     public function thakyou(Request $request){
 
       return view('thank_you');
+    }
+
+    public function faqView(Request $request)
+    {
+     return view('frontend_layout.faq.faq_view');
     }
     
 }

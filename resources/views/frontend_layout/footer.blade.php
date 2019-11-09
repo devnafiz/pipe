@@ -50,7 +50,7 @@
 								<div class="row clearfix">
 									<ul class="link-list col-md-6 col-sm-6 col-xs-12">
 										
-										<li><a href="#"> Faq</a></li>
+										<li><a href="{{url('/faq')}}"> Faq</a></li>
 										<li><a href="{{url('/view-delivery-tracking')}}">Delivery Tracking</a></li>
 										<li><a href="{{url('/truck-rent')}}">Truck Rent </a></li>
 										<li><a href="{{url('/pdf-download')}}">Download Pdf</a></li>

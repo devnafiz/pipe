@@ -45,6 +45,11 @@ Route::match(['get','post'],'/add-testimonial','FrontendController@addTestimonia
 
 //Thank you Page
 Route::get('/thank-you','FrontendController@thakyou');
+//faq
+Route::get('/faq','FrontendController@faqView');
+
+//ip
+Route::get('/clientIp','CientIpController@ClientIp');
 
 
 
