@@ -99,7 +99,7 @@ Route::group(['middleware'=>['adminLogin']],function(){
       Route::get('/admin/view-contact','AdminController@viewContact');
       Route::get('/admin/contact-details/{id}','AdminController@conactDetails');
       Route::get('/admin/delete-contact/{id}','AdminController@delContact');
-      Route::match(['get','post'],'/admin/send-mail/{id}','AdminController@sendMail');
+      Route::match(['get','post'],'/admin/send-mail/contact/{id}','AdminController@sendMail');
 
       //notification
       Route::get('/admin/seen-notification/{id}','NotificationController@seenNotify');

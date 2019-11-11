@@ -4,28 +4,54 @@
 contact-us
 
 @endsection
-
+@section('extra-css')
+<style>
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    padding-left: 10px;
+    line-height: 46px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+</style>
+@endsection
 
 
 @section('content')
 
   <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/2.jpg);">
+   <!--  <section class="page-title" style="background-image:url(images/background/2.jpg);">
     	<div class="auto-container">
         	<h2>Contact</h2>
         </div>
-    </section>
+    </section> -->
     
     <!--Breadcrumb-->
-    <div class="breadcrumb-outer">
+    <!-- <div class="breadcrumb-outer">
     	<div class="auto-container">
         	<ul class="bread-crumb text-center">
             	<li><a href="index.html">Home</a> <span class="fa fa-angle-right"></span></li>
                 <li>Contact</li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!--End Page Title-->
+    <section class="contact-location-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-md-12"> 
+                   <div class="google-maps" >
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.5308002474303!2d91.81042131422619!3d22.33357794733148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8b7d3f57035%3A0x174693a5259ed4d2!2sSheikh+International+Trading+Company!5e0!3m2!1sen!2sbd!4v1518516662419" width="1200" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 	
 	<!--Contact Location Section-->
     <section class="contact-location-section">
@@ -33,37 +59,66 @@ contact-us
         	<div class="row clearfix">
             	
                 <!--Column-->
-                <div class="info-column col-lg-4 col-md-6 col-sm-12">
-                	<div class="column-inner">
-                    	<div class="image">
-                        	<img src="images/icons/iceland.jpg" alt="" />
-                        </div>
-                        <h3>ICELAND</h3>
-                        <div class="text"> Montreal Ave, Staten <br> Island,NY 10306</div>
-                        <ul>
-                            <li>E: abcd@yousite.com</li>
-                            <li>H: 7.00 AM – 10.00PM</li>
-                        </ul>
-                    </div>
+
+                <div class="info-column col-lg-6 col-md-6 col-sm-12">
+                    <h2 class="title">Contact Us</h2>
+
+                    <p class="pre-text">
+                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam <br>
+                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat sed do eiusmod tempor incididunt ut labore
+            </p>
+            <div class="info">
+                        
+                <ul>
+                    <li class="address">
+                        <label class="icon"><i class="fa fa-home"></i></label>
+                        <span>Ahmed Mansion,936,SK.Mujib Road, CTG</span>
+                    </li>
+                    <li class="hotline">
+                        <label class="icon"><i class="fa fa-phone"></i></label>
+                        <span>+880-184-3507 243</span>
+                    </li>
+                    <li class="email">
+                        <label class="icon"><i class="fa fa-envelope"></i></label>
+                        <span><a href="#">Sheikhtubemills@Gmail.Com</a></span>
+                    </li>
+                    
+                </ul>
+                <ul class="social-icon-one">
+                            <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                            <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                </ul>
+            </div>
+                	
                 </div>
                 
                  <!--Column-->
-                <div class="info-column col-lg-4 col-md-6 col-sm-12">
-                	<div class="column-inner">
-                    	<div class="image">
-                        	<img src="images/icons/france.jpg" alt="" />
+                <div class="info-column col-lg-6 col-md-6 col-sm-12">
+                    <div class="contact-form">
+                        <form method="POST" action="{{url('/post-contact')}}" id="contact-form">
+                                {{csrf_field()}}
+                            <div class="contact-form-top">
+                                <input type="text" placeholder="Your name..." name="name" id="name" class='required' Required>
+                                <input type="email" placeholder="Your email" name="email" id="email" class='required' Required>
+                                <input type="text" placeholder="Your phone number" name="phone" id="phone" class='required' Required>
+                                <input type="text" placeholder="Subject"  name="subject" id="subject" class='required' Required>
+                            </div>
+                            <textarea name="message" id="message" cols="3" rows="3" placeholder="Comment..." class='required' Required></textarea>
+                            
+                                
+
+                                 <input type="submit" value="Submit" class="button button-check-out" style="background-color:#13b5ea;color:#fff">
+                            </form>
+
                         </div>
-                        <h3>FRANCE</h3>
-                        <div class="text">West 14th North Street, <br> Suite 21, Netherlands</div>
-                        <ul>
-                            <li>E: abcd@yousite.com</li>
-                            <li>H: 7.00 AM – 10.00PM</li>
-                        </ul>
-                    </div>
+                    
+                	
                 </div>
                 
                  <!--Column-->
-                <div class="info-column col-lg-4 col-md-6 col-sm-12">
+                <!-- <div class="info-column col-lg-4 col-md-6 col-sm-12">
                 	<div class="column-inner">
                     	<div class="image">
                         	<img src="images/icons/switzerland.jpg" alt="" />
@@ -75,89 +130,14 @@ contact-us
                             <li>H: 7.00 AM – 10.00PM</li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 
             </div>
         </div>
     </section>
     <!--End Contact Location Section-->
 	
-	<!--Contact Section-->
-    <section class="contact-page-section">
-    	<div class="auto-container">
-        	<div class="row clearfix">
-            	
-               <!--Map Column-->
-                <div class="map-column col-lg-4 col-md-12 col-sm-12">
-                	<div class="inner-column">
-                    	<!--Map Canvas-->
-                        <div class="map-canvas"
-                            data-zoom="12"
-                            data-lat="-37.817085"
-                            data-lng="144.955631"
-                            data-type="roadmap"
-                            data-hue="#ffc400"
-                            data-title="Envato"
-                            data-icon-path="images/icons/map-marker.png"
-                            data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
-                        </div>
-                    </div>
-                </div>
-               
-                <!--Form Column-->
-                <div class="form-column col-lg-8 col-md-12 col-sm-12">
-                	<div class="inner-column">
-                    	<!--Sec Title-->
-                       	<div class="sec-title">
-						   <h2>Contact us</h2>
-						</div>
-                        <!--Contact Form-->
-                        <div class="contact-form">
-                            <form method="POST" action="{{url('/post-contact')}}" id="contact-form">
-                            	{{csrf_field()}}
-                                <div class="row clearfix">
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="name" value="" placeholder="Your name" required>
-                                    </div>
-                                    
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="email" value="" placeholder="Your email address" required>
-                                    </div>
-                                    
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="phone" value="" placeholder="Phone number" required>
-                                    </div>
-                                    
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="subject" value="" placeholder="Subject" required>
-                                    </div>
-                                    
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <textarea name="message" placeholder="Type your massage here..."></textarea>
-                                    </div>
-                                    
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <button type="submit" class="theme-btn btn-style-one"><span class="txt">Submit now</span></button>
-                                    </div>                                        
-                                </div>
-                            </form>
-                        </div>
-                        <!--End Contact Form-->
-						<h3>OUR SOCIALS LINKS</h3>
-						<div class="print">Print this page to PDF for the complete set of vectors.</div>
-                   		<ul class="social-icon-one">
-							<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-							<li><a href="#"><span class="fa fa-twitter"></span></a></li>
-							<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-							<li><a href="#"><span class="fa fa-instagram"></span></a></li>
-						</ul>
-                    </div>
-                </div>
-                
-			</div>
-        </div>
-    </section>
-    <!--End Faq Section-->
+	
     
 	<!--Main Footer-->
 	<div class="bottom-parallax">

@@ -43,7 +43,7 @@ Contact View
                             
                             <td>{{$contact->name}}</td>
                            
-                            <td><a href="{{url('/admin/send-mail/'.$contact->id)}}" >{{$contact->email}}</a></td>
+                            <td><a href="{{url('/admin/send-mail/contact/'.$contact->id)}}" >{{$contact->email}}</a></td>
                             
                             <td>
                                  <button class="btn btn-outline-primary"><a href="{{url('/admin/contact-details/'.$contact->id)}}"> <i class="fa fa-eye"></i></a></button>
