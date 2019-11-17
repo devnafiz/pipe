@@ -115,6 +115,7 @@
                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-consultation')}}"> Consultation</a></li>
                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-truck-rent')}}"> Truck Rent</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('/admin/testimonial-list')}}"> Testimonial</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/view-scarp')}}"> Scrap</a></li>
                  
                 </ul>
               </div>

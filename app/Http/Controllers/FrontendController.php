@@ -20,9 +20,10 @@ use Mail;
 use App\Testimonial;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-
+use App\PreOrder;
 use Image;
 use Validator;
+use App\Scrap;
 
 
 class FrontendController extends Controller
@@ -61,12 +62,29 @@ class FrontendController extends Controller
 
     //product show
     public function viewProduct(Request $request){
-     $products=Product::paginate(1);
+     $products=Product::paginate(8);
      //$products=json_decode(json_encode($products));
      //echo "<pre>";print_r($products);die;
      return view('frontend_layout.product.shop')->with(compact('products'));
 
     }
+
+    //search product
+
+    public function searchProduct(Request $request)
+{
+  $data=$request->all();
+  //echo "<pre>";print_r($data);die;
+    $productName = $request->input('product_name');
+    if($productName !== '')
+    {
+        $products = Product::where('product_name', 'LIKE', '%' . $productName . '%')->where('status','1')->get();
+
+
+        return view('frontend_layout.product.shop')->with(compact('products'));
+    }
+    return false;
+}
 
     public function singleProductView($slug){
       $productDetails=Product::where('slug',$slug)->first();
@@ -100,6 +118,8 @@ class FrontendController extends Controller
             'company_address'=>'required',
             'city_name'=>'required|max:255',
             'product_name'=>'required',
+            'product_type'=>'required',
+            'thickness'=>'required',
             'qty'=>'required',
             'destination_address'=>'required',
             'comment'=>'required'
@@ -115,6 +135,8 @@ class FrontendController extends Controller
                     $preOrder->company_address=$request->company_address;
                     $preOrder->city_name=$request->city_name;
                     $preOrder->product_name=$request->product_name;
+                    $preOrder->product_type=$request->product_type;
+                    $preOrder->thickness=$request->thickness;
                     $preOrder->qty=$request->qty;
                    
 
@@ -132,6 +154,8 @@ class FrontendController extends Controller
             'company_address'=>$request->company_address,
             'city_name'=>$request->city_name,
             'product_name'=>$request->product_name,
+            'product_type'=>$request->product_type,
+            'thickness'=>$request->thickness,
             'qty'=>$request->qty,
             'destination_address'=>$request->destination_address,
             'comment'=>$request->comment
@@ -395,6 +419,72 @@ class FrontendController extends Controller
     public function faqView(Request $request)
     {
      return view('frontend_layout.faq.faq_view');
+    }
+
+
+    public function scrap(Request $request)
+    {
+
+      if($request->isMethod('post')){
+
+        // $data=$request->all();
+        // echo "<pre>";print_r($data);die;
+
+        $validator=Validator::make($request->all(),[
+                  'name'=>'required|max:255',
+                  'email' => 'required|email',
+                  'phone'=>'required',
+                  'company_name'=>'required|max:255',
+                  'company_address'=>'required',
+                 
+                  'scrap_type'=>'required',
+                  'qty'=>'required',
+                  'destination_address'=>'required',
+                  'comment'=>'required'
+
+        ]);
+
+        if($validator->passes()){
+           $scrap= new Scrap;
+                    $scrap->name=$request->name;
+                    $scrap->email=$request->email;
+                    $scrap->phone=$request->phone;
+                    $scrap->company_name=$request->company_name;
+                    $scrap->company_address=$request->company_address;
+                   
+                    $scrap->scrap_type=$request->scrap_type;
+                    $scrap->qty=$request->qty;
+                   
+
+                    $scrap->destination_address=$request->destination_address;
+                    $scrap->comment=$request->comment;
+                    
+                    $scrap->save();
+                    echo "done";
+
+                     $dataDetails=array(
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'company_name'=>$request->company_name,
+            'company_address'=>$request->company_address,
+            
+            'scrap_type'=>$request->scrap_type,
+            'qty'=>$request->qty,
+            'destination_address'=>$request->destination_address,
+            'comment'=>$request->comment
+
+      );
+       Mail::send('frontend_layout.contact.scrap_mail',$dataDetails,function($message)use($dataDetails){
+            $message->from($dataDetails['email']);
+            $message->to('nafiz016@gmail.com')->subject("Scrap Email ");
+
+       });
+       return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
+        }
+
+      }
+      return view('frontend_layout.scrap.scrap');
     }
     
 }

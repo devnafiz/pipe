@@ -46,6 +46,7 @@ class NewsLetterController extends Controller
                     $newsLetter->email=$request->email;
                      $newsLetter->status=1;
                     $newsLetter->save();
+                    return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
 
                     }else{
                          echo "Error";

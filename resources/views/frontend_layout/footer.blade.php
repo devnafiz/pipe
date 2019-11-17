@@ -287,7 +287,7 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 <script src="{{ asset('front_end/js/jquery.js')}}"></script>
 <script src="{{ asset('front_end/js/popper.min.js')}}"></script>
-<!-- <script src="{{ asset('front_end/js/bootstrap.min.js')}}"></script> -->
+<script src="{{ asset('front_end/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('front_end/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 <script src="{{ asset('front_end/js/jquery.fancybox.js')}}"></script>
 <script src="{{ asset('front_end/js/appear.js') }}"></script>
@@ -298,8 +298,8 @@ s0.parentNode.insertBefore(s1,s0);
 <script src="{{ asset('front_end/js/script.js')}}"></script>
 
 <!--Google Map APi Key-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
-<script src="{{ asset('front_end/js/map-script.js')}}"></script>
+<<!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+<script src="{{ asset('front_end/js/map-script.js')}}"></script> -->
 
 <!--End Google Map APi-->
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\ContactUs;
 use Mail;
 use App\NewsLetter;
+use App\Scrap;
 
 
 class AdminController extends Controller
@@ -225,5 +226,18 @@ class AdminController extends Controller
      public function updateNewsletterStatus($id,$status){
         NewsLetter::where('id',$id)->update(['status'=>$status]);
         return redirect()->back()->with('flash_message','Successfully change status');
+     }
+
+     //scrap
+     public function viewScrap(Request $request){
+
+      $scrapView=Scrap::get();
+      return view('admin.scrap.scrap_view')->with(compact('scrapView'));
+     }
+     public function delScrap($id){
+       Scrap::where('id',$id)->delete();
+
+       return redirect()->back()->with('flash_message','Scrap has been Deleted!');
+
      }
 }

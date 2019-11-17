@@ -15,8 +15,10 @@ Route::post('/post-contact','ContactUsController@postContact');
 //product view
 Route::get('/products','FrontendController@viewProduct');
 Route::get('/products/{slug}','FrontendController@singleProductView');
+Route::post('/products/serach-product','FrontendController@searchProduct');
 //gallery
 Route::get('/gallery','FrontendController@viewGallery');
+
 Route::get('/view-gallery/{slug}','FrontendController@singleGallery');
 //subscribe
 Route::post('/check-subcribe-email','NewsLetterController@checkSubscribe');
@@ -50,6 +52,8 @@ Route::get('/faq','FrontendController@faqView');
 
 //ip
 Route::get('/clientIp','CientIpController@ClientIp');
+//Scarp
+Route::match(['get','post'],'/scrap','FrontendController@scrap');
 
 
 
@@ -147,6 +151,10 @@ Route::group(['middleware'=>['adminLogin']],function(){
       Route::get('/admin/testimonial-list','TestimonialController@viewTestimonial');
       Route::get('/admin/delete-testimonial/{id}','TestimonialController@delTest');
       Route::get('/admin/update-testimonial-status/{id}/{status}','TestimonialController@updateTestimonialStatus');
+
+      //scrap
+      Route::get('/admin/view-scarp','AdminController@viewScrap');
+      Route::get('/admin/delete-scrap/{id}','AdminController@delScrap');
 
 
 

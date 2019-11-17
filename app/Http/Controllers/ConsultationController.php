@@ -47,4 +47,6 @@ class ConsultationController extends Controller
          $sentMail=Consultation::where('id',$id)->first();
            return view('admin.contact.send_mail')->with(compact('sentMail'));
      }
+
+     
 }
