@@ -54,6 +54,10 @@ Route::get('/faq','FrontendController@faqView');
 Route::get('/clientIp','CientIpController@ClientIp');
 //Scarp
 Route::match(['get','post'],'/scrap','FrontendController@scrap');
+//newws view
+Route::get('/news','FrontendController@viewNews');
+Route::get('/news/{id}','FrontendController@singleNews');
+Route::post('/news/comment','FrontendController@NewComment');
 
 
 
@@ -146,6 +150,9 @@ Route::group(['middleware'=>['adminLogin']],function(){
       Route::get('/admin/news-list','NewsController@viewNews');
       Route::get('/admin/news-details/{id}','NewsController@singleNews');
       Route::get('/admin/delete-news/{id}','NewsController@delNews');
+      Route::get('/admin/news-comments','NewsController@newsCommentView');
+       Route::get('/addmin/comments-Update-status/{id}/{status}','NewsController@updateNewsStatus');
+
       //testimonial
 
       Route::get('/admin/testimonial-list','TestimonialController@viewTestimonial');

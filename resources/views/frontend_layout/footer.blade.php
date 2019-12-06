@@ -59,7 +59,7 @@
 									<ul class="link-list col-md-6 col-sm-6 col-xs-12">
 										<!-- <li><a href="#">About Industry</a></li> -->
 										<li><a href="{{url('/career')}}">Careers</a></li>
-										<li><a href="#">Testimonials</a></li>
+										<li><a href="{{url('/add-testimonial')}}">Testimonials</a></li>
 										<li><a href="{{url('/free-consultation')}}">Free Consultation</a></li>
 										
 									</ul>
@@ -140,9 +140,8 @@
 						</div>
 						<div class="nav-column col-md-6 col-sm-12 col-xs-12">
 							<ul class="footer-nav">
-								<li><a href="#">Legal</a></li>
-								<li><a href="#">Sitemap</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								
+								<li><a href="#">Certification</a></li>
 								<li><a href="#">Terms & Condition</a></li>
 							</ul>
 						</div>
@@ -158,7 +157,7 @@
 <!--End pagewrapper-->
 
 <!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
+<!-- <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div> -->
 
 <!-- Color Palate / Color Switcher -->
 <div class="color-palate">

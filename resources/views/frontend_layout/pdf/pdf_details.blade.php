@@ -26,7 +26,7 @@
         				<div class="inner-column">
 							<h2>{{$pdfDetails->pdf_name}}</h2>
 							<ul class="detail-list">
-								{{$pdfDetails->Description}}
+								{{$pdfDetails->description}}
 							</ul>
 
 						</div>

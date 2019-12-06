@@ -132,7 +132,7 @@
 								<li class=""><a href="{{url('/page/about-us')}}">About</a>
 									
 								</li>
-								<li ><a href="#">Services</a>
+								<li ><a href="{{url('/news')}}">News</a>
 									
 								</li>
 								<li ><a href="{{url('/gallery')}}">Gallery</a>
@@ -210,7 +210,7 @@
 								<li class=""><a href="{{url('/page/about-us')}}">About</a>
 									
 								</li>
-								<li ><a href="#">Services</a>
+								<li ><a href="{{url('/news')}}">News</a>
 									
 								</li>
 								<li class=""><a href="{{url('/gallery')}}">Gallery</a>
@@ -251,7 +251,7 @@
 						<li class=""><a href="{{url('/page/about-us')}}">About</a>
 							
 						</li>
-						<li ><a href="#">Services</a>
+						<li ><a href="{{url('/news')}}">News</a>
 							
 						</li>
 						<li ><a href="{{url('/gallery')}}">Gallery</a>

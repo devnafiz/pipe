@@ -24,6 +24,10 @@ use App\PreOrder;
 use Image;
 use Validator;
 use App\Scrap;
+use App\News;
+use Carbon\Carbon;
+use App\NewsComment;
+use DB;
 
 
 class FrontendController extends Controller
@@ -485,6 +489,58 @@ class FrontendController extends Controller
 
       }
       return view('frontend_layout.scrap.scrap');
+    }
+
+    //view news
+    public function viewNews(Request $request)
+    {
+      $NewsList=News::orderByRaw('id DESC')->get();
+      //$NewsList=json_decode(json_encode($NewsList));
+      //echo "<pre>";print_r($NewsList);die;
+      return view('frontend_layout.news.view_news')->with(compact('NewsList'));
+    }
+
+
+    public function singleNews(Request $request,$id)
+    {
+      $NewsDetails=News::where('id',$id)->first();
+      //$NewsList=json_decode(json_encode($NewsList));
+      //echo "<pre>";print_r($NewsList);die;
+      $newsComments=NewsComment::where('news_id',$id)->where('status','1')->get();
+      $newsComments=json_decode(json_encode($newsComments));
+      $NewsList=News::orderByRaw('id DESC')->take(5)->get();
+      //echo "<pre>";print_r($newsComments);die;
+      return view('frontend_layout.news.single_news')->with(compact('NewsDetails','newsComments','NewsList'));
+    }
+
+    public function NewComment(Request $request)
+    {
+      if($request->isMethod('post')){
+
+           $data=$request->all();
+          //echo "<pre>";print_r($data);die;
+           $validator=Validator::make($request->all(),[
+
+               'name'=>'required|max:255',
+                'email' => 'required|email',
+                  
+                'comments'=>'required|max:255'
+                  
+           ]);
+           if($validator->passes()){
+
+            $comment=new NewsComment;
+            $comment->name=$request->name;
+            $comment->email=$request->email;
+            $comment->news_id=$request->news_id;
+            $comment->comments=$request->comments;
+            $comment->status=0;
+            $comment->save();
+            return Redirect::away('/thank-you')->with('flash_message','Your comment has been sent Successfully');
+
+           }
+
+      }
     }
     
 }

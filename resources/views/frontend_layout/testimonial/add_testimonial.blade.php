@@ -73,9 +73,10 @@ shop
                                         <input type="text" name="company_name" id="company_name" class="form-control" placeholder="Company Name " required="">
                                     </div>
                                     
-                                     <div class="input-group form-group">
-                                       
-                                       <input type="file" name="image" class="form-control" required="">
+                                     <div class="input-group form-group" style="color: black;">
+                                       <span>Choose your profile picture&nbsp</span> 
+                                       <input type="file" name="image" placeholder="Company Name " required="">
+
                                     </div>
                                     <div class="input-group form-group">
                                        

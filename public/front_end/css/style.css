@@ -2786,10 +2786,10 @@ img{
 
 .news-block .inner-box .lower-content{
 	position: relative;
-	margin-top: -20px;
+	/*margin-top: -20px;
 	margin-left: 20px;
-	margin-right: 20px;
-	padding: 30px 20px;
+	margin-right: 20px;*/
+	padding: 6px 20px;
 	border:1px solid #ececec;
 	background-color: #ffffff;
 	transition:all 0.3s ease;

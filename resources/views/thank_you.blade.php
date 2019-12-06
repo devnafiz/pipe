@@ -9,27 +9,14 @@ Thank You
 @section('content')
         
    
- @if(Session::has('flash_message'))
-          
-                                      <div class="alert alert-error alert-block">
-                                        <button type="button" class="close" data-dismiss="alert">×</button> 
-                                            <strong>{{session('flash_message')}}</strong>
-                                    </div>
-                                    @endif
-                                    @if(Session::has('flash_message_success'))
-                                      
-                                      <div class="alert alert-error alert-block">
-                                        <button type="button" class="close" data-dismiss="alert">×</button> 
-                                            <strong>{{session('flash_message_success')}}</strong>
-                                    </div>
- @endif
-    
+ 
+                                  
     <!--Breadcrumb-->
     <div class="breadcrumb-outer">
     	<div class="auto-container">
         	<ul class="bread-crumb text-center">
             	<li><a href="index.html">Home</a> <span class="fa fa-angle-right"></span></li>
-                <li>Consultation</li>
+                <li>Thank You</li>
             </ul>
         </div>
     </div>
@@ -45,7 +32,13 @@ Thank You
               <div class="form-column column col-lg-12 col-md-12 col-sm-12 ">
                 <div class=" jumbotron text-center">
                   <h1 class="display-3" style="color:red;">Thank You!</h1>
-                  <p class="lead"><strong>Your Information </strong> has been sent  Successfully </p>
+                  <p class="lead"><strong>@if(Session::has('flash_message'))
+          
+                                      <div class="alert alert-error alert-block">
+                                        <button type="button" class="close" data-dismiss="alert">×</button> 
+                                            <strong style="color: black;">{{session('flash_message')}}</strong>
+                                    </div>
+                                    @endif </p>
                   <hr>
                   <p>
                     Having trouble? <a href="">Contact us</a>

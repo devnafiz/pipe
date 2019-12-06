@@ -49,7 +49,7 @@ shop
 								
 							</div>
 							<h5><a href="{{url('/pdf-information/'.$pdf->id)}}">{{$pdf->pdf_name}}</a></h5>
-							<div class="text">{{$pdf->description}}</div>
+							<!-- <div class="text">{!! str_limit($pdf->description, $limit = 150, $end = '...') !!}</div> -->
 							<ul class="post-date">
 								
 							</ul>

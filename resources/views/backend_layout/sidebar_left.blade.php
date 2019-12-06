@@ -170,6 +170,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{url('/admin/add-news')}}">Add News</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('admin/news-list')}}">News list</a></li>
+                   <li class="nav-item"> <a class="nav-link" href="{{url('/admin/news-comments')}}">News Comments list</a></li>
                   
                 </ul>
               </div>

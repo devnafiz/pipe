@@ -46,7 +46,12 @@ Add News
                 </div>
               </div>
               
-              
+               <div class="form-group">
+                <label class="control-label">Enter Image</label>
+                <div class="controls">
+                  <input type="file" name="image"  class="form-control" >
+                </div>
+              </div>
 
               <div class="form-group">
                 <label class="control-label">Description</label>
