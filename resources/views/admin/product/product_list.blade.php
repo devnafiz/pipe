@@ -48,6 +48,7 @@ Product List
                             
                             <td>
                                  <button class="btn btn-outline-primary"><a href="{{url('/admin/edit-product/'.$product->id)}}"> <i class="fa fa-edit"></i></a></button>
+                                 <a href="{{url('/admin/add-product-image/'.$product->id)}}"><i class="fa fa-upload"></i></a>
                              <a rel="{{$product->id}}"  rel1="delete-product" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delProduct"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>

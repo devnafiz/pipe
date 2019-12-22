@@ -20,6 +20,10 @@
   <!-- Custom js for this page-->
   <script src="{{ asset('back_end/js/dashboard.js')}}"></script>
   <!-- End custom js for this page-->
+  <!--Google Map APi Key-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+<script src="js/map-script.js"></script>
+<!--End Google Map APi-->
 </body>
 
 </html>

@@ -624,6 +624,7 @@ img{
 	position:relative;
 	float: left;
 	padding: 13px 0px;
+	left: 140px;
 }
 
 .header-top .top-left .text{
@@ -5583,7 +5584,7 @@ img{
 	position:relative;
 	z-index:11;
 	text-align:center;
-	padding:30px 0px 0px;
+	padding:0px 0px 0px;
 }
 
 .shop-item .inner-box .lower-content h6{

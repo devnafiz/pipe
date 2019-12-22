@@ -17,7 +17,7 @@
         			<div class="image-column col-lg-8 col-md-12 col-sm-12">
         				<div class="inner-column">
         					<div class="image">
-        						<img src="{{asset('images/backend_image/gallery/signle/'.$gallery->image)}}" alt="" />
+        						<img src="{{asset('images/backend_image/gallery/single/'.$gallery->image)}}" alt="" />
 							</div>
 						</div>
 					</div>

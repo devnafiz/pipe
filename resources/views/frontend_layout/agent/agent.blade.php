@@ -1,7 +1,7 @@
 @extends('frontend_layout.design_layout')
 
 @section('title')
-shop
+Become Our Agent
 @endsection
 
 
@@ -28,7 +28,7 @@ shop
    <!--Page Title-->
     <section class="page-title" style="background-image:url(images/background/2.jpg);">
     	<div class="auto-container">
-        	<h2> Truck Rent</h2>
+        	<h2> Become Our Agent</h2>
         </div>
     </section>
 
@@ -38,7 +38,7 @@ shop
     	<div class="auto-container">
         	<ul class="bread-crumb text-center">
             	<li><a href="index.html">Home</a> <span class="fa fa-angle-right"></span></li>
-                <li>Truck Rent</li>
+                <li>Become Our Agent</li>
             </ul>
         </div>
     </div>
@@ -56,7 +56,7 @@ shop
                 	
                         <div class="col-md-10 text-center">
                             <div class="welcome_text">
-                            <form action="{{url('/truck-rent')}}" method="post">
+                            <form action="{{url('/agent')}}" method="post">
                                 {{csrf_field()}}
                                     <div class="input-group form-group">
                                        
@@ -74,19 +74,16 @@ shop
                                     </div>
                                     <div class="input-group form-group">
                                        
-                                        <input type="text" name="company_address" class="form-control" placeholder="Company Address " required="">
+                                        <input type="text" name="company_name" class="form-control" placeholder="Company Name " required="">
                                     </div>
-                                    <div class="input-group form-group">
-                                       
-                                        <input type="text" name="product_qty" class="form-control" placeholder="Product Quantity" required="">
-                                    </div>
+                                    
                                      <div class="input-group form-group">
                                        
-                                        <input type="text" name="destination" class="form-control" placeholder="Destination" required="">
+                                        <input type="text" name="location" class="form-control" placeholder="Destination" required="">
                                     </div>
                                     <div class="input-group form-group">
                                        
-                                       <textarea name="quoate" class="" placeholder="Quoate For Rent" rows="4" cols="140" style="border: 1px solid #13b5ea">
+                                       <textarea name="description" class="" placeholder="Quoate For Rent" rows="4" cols="140" style="border: 1px solid #13b5ea">
                                           
                                        </textarea>
                                     </div>

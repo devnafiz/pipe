@@ -42,7 +42,7 @@
 				<div class="clearfix">
 					<!--Top Left-->
 					<div class="top-left">
-						<div class="text">Welcome to Lezo Financial Services, we have over 25 years of expertise</div>
+						<div class="text">Welcome to our Website,We are leading Pipe Manufacturer Company In Chattogram</div>
 					</div>
 					<!--Top Right-->
 					<div class="top-right">

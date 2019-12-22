@@ -58,6 +58,10 @@ Route::match(['get','post'],'/scrap','FrontendController@scrap');
 Route::get('/news','FrontendController@viewNews');
 Route::get('/news/{id}','FrontendController@singleNews');
 Route::post('/news/comment','FrontendController@NewComment');
+// inquery
+Route::post('/inquery','FrontendController@inquery');
+// agent
+Route::match(['get','post'],'/agent','FrontendController@becomeAgent');
 
 
 
@@ -89,6 +93,8 @@ Route::group(['middleware'=>['adminLogin']],function(){
       Route::match(['get','post'],'/admin/add-product','ProductController@addProduct');
       Route::match(['get','post'],'/admin/edit-product/{id}','ProductController@editProduct');
       Route::get('/admin/delete-product/{id}','ProductController@delProduct');
+      Route::match(['get','post'],'/admin/add-product-image/{id}','ProductController@addImage');
+      Route::get('/admin/delete-image/{product_id}/{id}','ProductController@delProductImage');
 
       //gallery
       Route::match(['get','post'],'/admin/add-gallery','GalleryController@addgallery');

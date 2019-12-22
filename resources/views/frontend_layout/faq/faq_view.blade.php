@@ -15,7 +15,7 @@ shop
              <div class="subscribe-style-one" style="background-color:transparent;padding: 3px 0px 26px;">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     
-                    <form method="post" action="contact.html">
+                    <form method="post" action="#">
                         <div class="form-group clearfix" style="padding-right: 130px;">
                             <input type="email" name="email" value="" placeholder="Search Your Answer" required >
                             <button type="submit" class="theme-btn btn-style-one" ><span class="txt">search</span></button>
@@ -171,6 +171,49 @@ shop
 
             </ul>
             <!--End Accordion Box-->
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row clearfix justify-content-md-center">
+                <div class=" col-md-12 " style="text-align: center;">
+                     <h3> Ask  Your Questions</h3><br>
+                </div>
+               
+                <hr>
+                <div class="col-md-12">
+                    <form action="#" method="post"  enctype="multipart/form-data">
+                    <div class="input-group form-group">
+                                       
+                         <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                    </div>
+
+                    <div class="input-group form-group">
+                                       
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="input-group form-group">
+                                       
+                        <input type="text" name="subject" class="form-control" placeholder="Subject">
+                    </div>
+                    <div class="input-group form-group">
+                           <textarea name="message" class="form-control">
+                               
+                           </textarea>            
+                        
+                    </div>
+                                    
+                                    
+
+                    <div class="form-group">
+                            <button type="submit"   class="btn btn-primary btn-block ">submit</button>
+                    </div>
+                    
+                </form>
+                </div>
+               
+                
+            </div>
         </div>
     </section>
     

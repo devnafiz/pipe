@@ -7,20 +7,24 @@ shop
 
 
 @section('content')
-        @if(Session::has('flash_message'))
+         @if(Session::has('flash_message'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>{{session('flash_message')}}</strong>
+                                    </div>
           
-							          <div class="alert alert-error alert-block">
-							            <button type="button" class="close" data-dismiss="alert">×</button> 
-							                <strong>{{session('flash_message')}}</strong>
-							        </div>
-							        @endif
-							        @if(Session::has('flash_message_success'))
-							          
-							          <div class="alert alert-error alert-block">
-							            <button type="button" class="close" data-dismiss="alert">×</button> 
-							                <strong>{{session('flash_message_success')}}</strong>
-							        </div>
-							        @endif
+                                     
+                                    @endif
+                                    @if(Session::has('flash_message_success'))
+                                     <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>{{session('flash_message_warning')}}</strong>
+                                    </div>
+                                    @endif
    <!--Page Title-->
     <section class="page-title" style="background-image:url(images/background/2.jpg);">
     	<div class="auto-container">
@@ -106,6 +110,12 @@ shop
 
 
 
+@endsection
+@section('extra-js')
+<script type="text/javascript">
+    
+    $(".alert").alert();
+</script>
 @endsection
 
 @section('extra-css')

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Image;
 use App\Product;
+use App\ProductImage;
 
 class ProductController extends Controller
 {
@@ -117,5 +118,60 @@ class ProductController extends Controller
         Product::where(['id'=>$id])->delete();
         return redirect()->back()->with('flash_message','Product has been successfully Deleted');
     }
+     //add image
+    public function addImage(Request $request,$id)
+    {
+
+     //$data=$request->all();
+     //echo "<pre>";print_r($data);die;
+      $productDetails=Product::where('id',$id)->first();
+      //$productDetails=json_decode(json_encode($productDetails));
+      //echo "<pre>";print_r($productDetails);die;
+      if($request->isMethod('post')){
+        $data=$request->all();
+        $image=new ProductImage;
+        if($request->hasFile('image')){
+          $file=$request->file('image');
+          //echo "<pre>";print_r($files);die;
+          //foreach($files as $file){
+
+             if($file->isValid()){
+            
+            $extension=$file->getClientOriginalExtension();
+            $filename=rand(111,99999).'.'.$extension;
+
+            $large_image_path ='images/backend_image/products/large/'.$filename;
+            $medium_image_path ='images/backend_image/products/medium/'.$filename;
+            $small_image_path ='images/backend_image/products/small/'.$filename;
+            Image::make($file)->save($large_image_path);
+            Image::make($file)->resize(300,300)->save($medium_image_path);
+            Image::make($file)->resize(180,180)->save($small_image_path);
+            $image->image=$filename;
+            
+
+          }
+
+
+        }
+
+        $image->product_id=$data['product_id'];
+            $image->save();
+            return redirect()->back()->with('flash_message','upload Image');
+
+
+      }
+      $productImage=ProductImage::where(['product_id'=>$id])->get();
+      return view('admin.product.add_image')->with(compact('productDetails','productImage'));
+    }
+    //delte product Image
+    public function delProductImage($product_id,$id){
+
+
+        ProductImage::where(['id'=>$id,'product_id'=>$product_id])->delete();
+    return redirect()->back()->with('flash_message','Delete Image!');
+    }
+
+    
+
 
 }

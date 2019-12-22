@@ -61,7 +61,7 @@
 										<li><a href="{{url('/career')}}">Careers</a></li>
 										<li><a href="{{url('/add-testimonial')}}">Testimonials</a></li>
 										<li><a href="{{url('/free-consultation')}}">Free Consultation</a></li>
-										
+										<li><a href="{{url('/agent')}}">Become Our Agent</a></li>
 									</ul>
 								</div>
 							</div>
@@ -140,7 +140,7 @@
 						</div>
 						<div class="nav-column col-md-6 col-sm-12 col-xs-12">
 							<ul class="footer-nav">
-								
+								<li><a href="#">Customer Registration Coming Soon..</a></li>
 								<li><a href="#">Certification</a></li>
 								<li><a href="#">Terms & Condition</a></li>
 							</ul>
@@ -265,7 +265,7 @@ s0.parentNode.insertBefore(s1,s0);
                    }else if(resp=="Error"){
                        $("#statusSubcribe").html("<font color='red'>Email Not Valid</font>");
                    }else{
-                   	  $("#statusSubcribe").html("<font color='green'>Email Successfully Sent</font>");
+                   	  $("#statusSubcribe").html("<font color='#13b5ea'>Email Successfully Sent</font>");
                    }
                  	
                  },error:function(){

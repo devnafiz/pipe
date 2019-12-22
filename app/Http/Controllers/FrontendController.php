@@ -28,6 +28,7 @@ use App\News;
 use Carbon\Carbon;
 use App\NewsComment;
 use DB;
+use App\ProductImage;
 
 
 class FrontendController extends Controller
@@ -92,8 +93,10 @@ class FrontendController extends Controller
 
     public function singleProductView($slug){
       $productDetails=Product::where('slug',$slug)->first();
+      //echo "<pre>";print_r($productDetails);die;
+       $productImages=ProductImage::where(['product_id'=>$productDetails->id])->get();
 
-      return view('frontend_layout.product.single_product')->with(compact('productDetails'));
+      return view('frontend_layout.product.single_product')->with(compact('productDetails','productImages'));
     }
     //gallery
 
@@ -170,9 +173,10 @@ class FrontendController extends Controller
             $message->to('nafiz016@gmail.com')->subject("PreOrder Email ");
 
        });
-       return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
+       return redirect()->back()->with('flash_message', 'Something is Wrong Now!');
+       //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
        }
-        return redirect()->back()->with('success', 'Something is Wrong Now!');
+        return redirect()->back()->with('flash_message_warning', 'Something is Wrong Now!');
         //   if ($validator->fails()) {
         //     return redirect()->back()->withErrors($validator)->withInput();
         // }
@@ -200,7 +204,7 @@ class FrontendController extends Controller
 
          }else{
 
-          return redirect()->back()->with('flash_message','Your Tracking Numner Is not Valid!');
+          return redirect()->back()->with('flash_message_warning','Your Tracking Numner Is not Valid!');
          }
 
       }
@@ -239,10 +243,10 @@ class FrontendController extends Controller
                     $truckrent->destination=$request->destination;
                     $truckrent->quoate=$request->quoate;
                     $truckrent->save();
-                     return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
-
+                     //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
+                    return redirect()->back()->with('flash_message','Your Informationmay has been sent   Successfully');
                     }else{
-                          return redirect()->back()->with('flash_message','Sorry  your Informationmay be  not valid');
+                          return redirect()->back()->with('flash_message_warning','Sorry  your Informationmay be  not valid');
                     }
 
 
@@ -285,10 +289,10 @@ class FrontendController extends Controller
                     $consultations->date=$request->date;
                     
                     $consultations->save();
-                    return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
-
+                    //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
+                    return redirect()->back()->with('flash_message','Your Pre-Order Informationmay has been sent Successfully');
                     }else{
-                          return redirect()->back()->with('flash_message','Sorry  your Informationmay be  not valid');
+                          return redirect()->back()->with('flash_message_warning','Sorry  your Informationmay be  not valid');
                     }
 
       }
@@ -352,7 +356,7 @@ class FrontendController extends Controller
                     return view('frontend_layout.pdf.pdf_details')->with(compact('pdfDetails'));
 
                     }else{
-                          return redirect()->back()->with('flash_message','Sorry  your Informationmay be  not valid');
+                          return redirect()->back()->with('flash_message_warning','Sorry  your Informationmay be  not valid');
                     }
 
 
@@ -403,6 +407,7 @@ class FrontendController extends Controller
             $testimonial->status=0;
            $testimonial->save();
            //return redirect()->b
+            return redirect()->back()->with('flash_message','Your valuable information add comming soon');
 
          }
         
@@ -484,7 +489,8 @@ class FrontendController extends Controller
             $message->to('nafiz016@gmail.com')->subject("Scrap Email ");
 
        });
-       return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
+       //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
+       return redirect()->back()->with('flash_message','Your Informationmay has been sent   Successfully');
         }
 
       }
@@ -536,11 +542,89 @@ class FrontendController extends Controller
             $comment->comments=$request->comments;
             $comment->status=0;
             $comment->save();
-            return Redirect::away('/thank-you')->with('flash_message','Your comment has been sent Successfully');
+            //return Redirect::away('/thank-you')->with('flash_message','Your comment has been sent Successfully');
+            return redirect()->back()->with('flash_message','Thank You For Your Comment');
 
            }
 
       }
+    }
+
+
+    public function inquery(Request $request){
+
+      if($request->isMethod('post')){
+        $data=$request->all();
+        //echo "<pre>";print_r($data);die;
+        $validator=Validator::make($request->all(),[
+          'name'=>'required|max:255',
+          'email'=>'required|email',
+          'phone'=>'required|numeric',
+          'company_address'=>'required|max:255'
+
+
+        ]);
+        if($validator->passes()){
+
+          $categories_id = DB::table('inquery')->insertGetId([
+          'name'   =>   $request->name,
+          'email'     =>   $request->email,
+          'phone'      =>   $request->phone,
+          'company_address'  =>   $request->company_address,
+          'product_id'=>$request->product_id,
+          'created_at'=>Carbon::now()
+          ]);
+          //return Redirect::away('/thank-you')->with('flash_message','Your Inquriy has been sent Successfully');
+          return redirect()->back()->with('flash_message','Your Inquriy has been sent Successfully');
+
+
+        }else{
+          return redirect()->back()->with('flash_message_warning','Sorry Your information not Valid!');
+        }
+
+
+      }
+    }
+
+    //become our  agent
+    public function becomeAgent(Request $request){
+
+      if($request->isMethod('post')){
+        $data=$request->all();
+        //echo "<pre>";print_r($data);die;
+        $validator=Validator::make($request->all(),[
+          'name'=>'required|max:255',
+          'email'=>'required|email',
+          'phone'=>'required|numeric',
+          'company_name'=>'required|max:255',
+          'location'=>'required|max:255',
+          'description'=>'required|max:300'
+
+
+        ]);
+        if($validator->passes()){
+
+          $categories_id = DB::table('inquery')->insertGetId([
+          'name'   =>   $request->name,
+          'email'     =>   $request->email,
+          'phone'      =>   $request->phone,
+          'company_name'  =>   $request->company_name,
+          'location'  =>   $request->location,
+          'description'  =>   $request->description,
+          
+          'created_at'=>Carbon::now()
+          ]);
+          //return Redirect::away('/thank-you')->with('flash_message','Your Inquriy has been sent Successfully');
+          return redirect()->back()->with('flash_message','Your Inquriy has been sent Successfully');
+
+
+        }else{
+          return redirect()->back()->with('flash_message_warning','Sorry Your information not Valid!');
+        }
+
+
+      }
+      return view('frontend_layout.agent.agent');
     }
     
 }

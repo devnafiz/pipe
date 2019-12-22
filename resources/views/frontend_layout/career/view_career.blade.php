@@ -49,7 +49,7 @@
 
                     <thead class="thead-dark">
                         <tr>
-                            <td>Id</td>
+                            
                             <td>Job Title</td>
                             <td>Job Requirement</td>
                             <td>Option</td>
@@ -59,7 +59,7 @@
 
                         @foreach($careerDetails as $job)
                         <tr>
-                            <td>{{$job->id}}</td>
+                            
                             <td>{{$job->job_title}}</td>
                             <td>{{$job->job_requirement}}</td>
                             <td>

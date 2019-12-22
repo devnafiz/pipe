@@ -7,6 +7,24 @@ shop
 
 
 @section('content')
+ @if(Session::has('flash_message'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>{{session('flash_message')}}</strong>
+                                    </div>
+          
+                                     
+                                    @endif
+                                    @if(Session::has('flash_message_success'))
+                                     <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>{{session('flash_message_warning')}}</strong>
+                                    </div>
+                                    @endif
 
      <section class="page-title" style="background-image:url(images/background/2.jpg);">
     	<div class="auto-container">
@@ -41,11 +59,22 @@ shop
                     
                         <div class="image-column col-lg-7 col-md-12 col-sm-12">
                             <div class="carousel-outer">
-                               <a href="{{asset('images/backend_image/products/medium/'.$productDetails->image)}}" class="lightbox-image" title="Image Caption Here"><img src="{{asset('images/backend_image/products/medium/'.$productDetails->image)}}" alt=""></a>
+                               
+                                
                                 <ul class="image-carousel owl-carousel owl-theme">
-                                    <li></li>
-                                    
+                                     @foreach($productImages as $Image)
+                                    <li><a href="{{asset('images/backend_image/products/medium/'.$Image->image)}}" class="lightbox-image" title="Image Caption Here"><img src="{{asset('images/backend_image/products/medium/'.$Image->image)}}" height="500px" alt=""></a></li>
+                                    @endforeach
+
                                 </ul>
+                               
+                                <ul class="thumbs-carousel owl-carousel owl-theme">
+                                    @foreach($productImages as $Image)
+                                   <li><img src="{{asset('images/backend_image/products/small/'.$Image->image)}}" alt=""></li>
+                                     @endforeach
+                                   
+                                </ul>
+
                                 
                                 <!-- <ul class="thumbs-carousel owl-carousel owl-theme">
                                     <li><img src="images/resource/products/14.jpg" alt=""></li>
@@ -57,16 +86,16 @@ shop
                                     <li><img src="images/resource/products/16.jpg" alt=""></li>
                                     <li><img src="images/resource/products/17.jpg" alt=""></li>
                                 </ul> -->
-                                
+                               
                             </div>
                         </div>
                         
                         <!--Info Column-->
                         <div class="info-column col-lg-5 col-md-12 col-sm-12">
                             <div class="details-header">
-                                <h2>Lizion</h2>
+                                <h2>{{$productDetails->product_name}}</h2>
                                 <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
-                                <div class="item-price">Price: {{$productDetails->price}}</div>
+                                <div class="item-price">Price: {{$productDetails->price}} TK</div>
                             </div>
 
                             <div class="text">
@@ -89,8 +118,8 @@ shop
                             </div> -->
                             
                             <ul class="shop-list">
-                                <li><strong>SKU</strong><span class="theme_color">.</span>{{$productDetails->product_code}}</li>
-                                <li><strong>Category</strong><span class="theme_color">.</span>Branding, Web Design</li>
+                                <li><strong>Product Code:</strong><span class="theme_color">.</span>{{$productDetails->product_code}}</li>
+                                <!-- <li><strong>Category</strong><span class="theme_color">.</span>Branding, Web Design</li> -->
                                <!--  <li><strong>share</strong><span class="theme_color">.</span></li>
                                 <li><a href="#">Add to Wishlist .</a></li> -->
                             </ul>
@@ -110,7 +139,7 @@ shop
                         <ul class="tab-btns tab-buttons clearfix">
                             <li data-tab="#prod-details" class="tab-btn active-btn">Description</li>
                             <li data-tab="#prod-info" class="tab-btn">Additional Information</li>
-                            <!-- <li data-tab="#prod-reviews" class="tab-btn">Reviews (2)</li> -->
+                            <li data-tab="#Inquriy" class="tab-btn">Inquriy Now </li> 
                         </ul>
                         
                         <!--Tabs Container-->
@@ -126,11 +155,56 @@ shop
                             <!--Tab / Active Tab-->
                             <div class="tab" id="prod-info">
                                 <div class="content">
-                                    <p>{{$productDetails->description}}.</p>
+                                    <p>{{$productDetails->additional_des}}.</p>
                                 </div>
                             </div>
                             
                             <!--Tab-->
+                            <div class="tab" id="Inquriy">
+                                <div class="content">
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-8 ">
+                                    <form action="{{url('/inquery')}}" method="POST">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="product_id" value="{{$productDetails->id}}">
+                                         <div class="input-group form-group">
+                                       
+                                        <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                                    </div>
+
+                                    <div class="input-group form-group">
+                                       
+                                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                                    </div>
+
+                                    <div class="input-group form-group">
+                                       
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone Number" required="">
+                                    </div>
+                                    <div class="input-group form-group">
+                                       
+                                        <input type="text" name="company_address" class="form-control" placeholder="Company Name " required="">
+                                    </div>
+                                    <div class="input-group form-group">
+                                       
+                                        <textarea name="description" class="form-control">
+                                            
+                                        </textarea>
+                                    </div>
+                                     
+                                    
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn  btn-block  " style="background:#13b5ea ">inquriy now </button>
+                                    </div>
+                                        
+
+                                    </form>
+                                </div>
+                                </div>
+                                        
+                                </div>
+                            </div>
                             
                             <!--End Tab-->
                             
@@ -146,6 +220,12 @@ shop
     </section>
 
 
+@endsection
+@section('extra-js')
+<script type="text/javascript">
+    
+    $(".alert").alert();
+</script>
 @endsection
 @section('extra-css')
 <style type="text/css">

@@ -31,11 +31,11 @@ class GalleryController extends Controller
                   	$filename=rand(111,99999).'.'.$extension;
                   	$large_image_path ='images/backend_image/gallery/large/'.$filename;
                     $medium_image_path='images/backend_image/gallery/medium/'.$filename;
-                    $single_image_path='images/backend_image/gallery/signle/'.$filename;
+                    $single_image_path='images/backend_image/gallery/single/'.$filename;
 
                   	Image::make($tmp_image)->save($large_image_path);
-                    Image::make($image_tmp)->resize(600,400)->save($medium_image_path);
-                    Image::make($image_tmp)->resize(700,400)->save($single_image_path);
+                    Image::make($tmp_image)->resize(600,400)->save($medium_image_path);
+                    Image::make($tmp_image)->resize(700,400)->save($single_image_path);
                   	$gallery->image =$filename;
 
                   }
@@ -73,10 +73,10 @@ class GalleryController extends Controller
     				$filename=rand(111,99999).'.'.$extension;
     				$large_image_path='images/backend_image/gallery/large/'.$filename;
             $medium_image_path='images/backend_image/gallery/medium/'.$filename;
-            $single_image_path='images/backend_image/gallery/signle/'.$filename;
+            $single_image_path='images/backend_image/gallery/single/'.$filename;
     				Image::make($tmp_image)->save($large_image_path);
             Image::make($tmp_image)->resize(600,400)->save($medium_image_path);
-            Image::make($image_tmp)->resize(700,400)->save($single_image_path);
+            Image::make($tmp_image)->resize(700,400)->save($single_image_path);
 
     			}
     		}else{

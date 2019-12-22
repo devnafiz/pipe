@@ -92,8 +92,8 @@ shop
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="lower-content clearfix">
-                                        	<div class="pull-left">
+                                        <div class="lower-content clearfix" >
+                                        	<div style="text-align: center;border: 1px solid #ccc;">
                                             	<h6><a href="{{url('/products/'.$product->slug)}}">{{$product->product_name}}</a></h6>
                                             </div>
                                             <div class="pull-right">
