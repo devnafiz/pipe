@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sheikh Pipe Mills| Login</title>
+  <title>Sheikh Tube Mills| Login</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('back_end/vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{ asset('back_end/vendors/simple-line-icons/css/simple-line-icons.css')}}">
@@ -46,7 +46,7 @@
                     <button type="submit" class="btn btn-block btn-warning btn-lg font-weight-medium" >Login</button>
                   </div>
                   <div class="mt-3 text-center">
-                    <a href="#" class="auth-link text-white">Forgot password?</a>
+                    <!-- <a href="#" class="auth-link text-white">Forgot password?</a> -->
                   </div>                 
                 </form>
               </div>

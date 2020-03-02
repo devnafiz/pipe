@@ -38,7 +38,7 @@ shop
 
 			<!--Case block-->
 			@foreach($pdfDetails as $pdf)
-			  <div class="news-block col-lg-4 col-md-6 col-sm-12">
+			  <div class="news-block col-lg-3 col-md-4 col-sm-6">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
 							<a href="{{url('/pdf-information/'.$pdf->id)}}"><img src="{{asset('/images/backend_image/pdf/pdf.png')}}" alt="" width="370px"  height="200px" /></a>

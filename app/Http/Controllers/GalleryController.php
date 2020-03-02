@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Gallery;
 use Image;
+use Mail;
+use Validator;
 
 class GalleryController extends Controller
 {
@@ -13,12 +15,20 @@ class GalleryController extends Controller
     	if($request->isMethod('post')){
     		$data=$request->all();
     		//echo "<pre>";print_r($data);die;
-
+         $validator=Validator::make($request->all(),[
+           'client_name' => 'required|max:255',
+           'slug' => 'required|',
+           'content'=>'required|max:500',
+           'image'=>'required'
+            
+            
+           ]);
+      if($validator->passes()){
     		$gallery=new Gallery;
     		$gallery->client_name=$data['client_name'];
-    		$gallery->location=$data['location'];
-    		$gallery->project_value=$data['project_value'];
-    		$gallery->completed=$data['completed'];
+    		// $gallery->location=$data['location'];
+    		// $gallery->project_value=$data['project_value'];
+    		// $gallery->completed=$data['completed'];
           $gallery->slug=$data['slug'];
 
     		$gallery->content=$data['content'];
@@ -54,10 +64,13 @@ class GalleryController extends Controller
             $gallery->status=$status;
             $gallery->save();
             return redirect()->back()->with('flash_message','Successfully add gallery');
+          }else{
 
+
+           return redirect()->back()->with('flash_message','This gallery information not valid!');
 
     	}
-
+     }
     	return view('admin.gallery.add_gallery');
     }
 
@@ -88,7 +101,7 @@ class GalleryController extends Controller
                 $status=0;
             }
 
-          Gallery::where(['id'=>$id])->update(['client_name'=>$data['client_name'],'location'=>$data['location'],'project_value'=>$data['project_value'],'completed'=>$data['completed'],'slug'=>$data['slug'],'content'=>$data['content'],'image'=>$filename,'status'=>$status]);
+          Gallery::where(['id'=>$id])->update(['client_name'=>$data['client_name'],'slug'=>$data['slug'],'content'=>$data['content'],'image'=>$filename,'status'=>$status]);
           return redirect()->back()->with('flash_message','Successfully edit Gallery');  
 
     		

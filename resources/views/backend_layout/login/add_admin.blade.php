@@ -20,6 +20,15 @@ Add  Admin
                       <input type="text" class="form-control" name="username" id="exampleInputName1" placeholder="User Name" required>
                     </div>
                     <div class="form-group">
+                      <label for="exampleInputName1">Full Name</label>
+                      <input type="text" class="form-control" name="name" id="exampleInputName1" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Email</label>
+                      <input type="email" class="form-control" name="email" id="exampleInputName1" placeholder="Email" required>
+                    </div>
+
+                    <div class="form-group">
                       <label for="exampleInputName1">Password</label>
                       <input type="password" class="form-control" name="password" id="exampleInputName1"  required>
                     </div>

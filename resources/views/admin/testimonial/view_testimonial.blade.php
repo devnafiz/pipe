@@ -16,6 +16,12 @@ Testtimonial List
 
 
 @section('content')
+<div class="row">
+
+  <div class="col-12">
+    <a href="{{url('admin/addTestimonial')}}" class="btn btn-primary" style="background-color: #16c4c1;">Add Testimonials </a>
+  </div>
+</div>
 
  <div class="card">
             <div class="card-body">
@@ -29,8 +35,8 @@ Testtimonial List
                             <th>Id #</th>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th>Designation</th>
+                            
                             <th>Dtails</th>
                             <th>Status</th>
                             
@@ -43,8 +49,8 @@ Testtimonial List
                             <td>{{$testimonial->id}}</td>
                             <td><img src="{{asset('images/backend_image/testimonial/small/'.$testimonial->image)}}" width="50px" height="50px"></td>
                             <td>{{$testimonial->name}}</td>
-                            <td>{{$testimonial->email}}</td>
-                            <td>{{$testimonial->phone}}</td>
+                            <td>{{$testimonial->designation}}</td>
+                            
                             <td>{{$testimonial->details}}</td>
                              <td>@if($testimonial->status==1)
                             <a href="{{url('/admin/update-testimonial-status/'.$testimonial->id.'/0')}}">  Active</a>

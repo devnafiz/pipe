@@ -33,6 +33,7 @@ Product List
                             <th>Phone</th>
                             <th>Company Address</th>
                             <th>Date</th>
+                            <th>Message</th>
                             
                             
                             <th>Actions</th>
@@ -50,6 +51,7 @@ Product List
                             <td>{{$consultation->phone}}</td>
                             <td>{{$consultation->company_address}}</td>
                              <td>{{$consultation->date}}</td>
+                             <td>{{$consultation->comment}}</td>
                              
                               <td>  
                              <a rel="{{$consultation->id}}"  rel1="delete-consultation" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delNews"><i class="fa fa-trash"></i></a>

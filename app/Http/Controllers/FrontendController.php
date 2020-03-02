@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Contact;
+use App\ContactUs;
 use App\Page;
 use App\Product;
 use App\Banner;
@@ -29,6 +29,7 @@ use Carbon\Carbon;
 use App\NewsComment;
 use DB;
 use App\ProductImage;
+use App\Notification;
 
 
 class FrontendController extends Controller
@@ -38,8 +39,9 @@ class FrontendController extends Controller
       $testimonials=Testimonial::where('status','1')->orderBy('id','desc')->take(4)->get();
       //dd($testimonial);
       //echo "<pre>";print_r($testimonials);die;
-
-    	return view('index')->with(compact('slider','testimonials'));
+      $products=Product::where('status','1')->orderBy('id','desc')->take(7)->get();
+      //echo "<pre>";print_r($products);die;
+    	return view('index')->with(compact('slider','testimonials','products'));
     }
 
 
@@ -151,7 +153,19 @@ class FrontendController extends Controller
                     $preOrder->comment=$request->comment;
                     
                     $preOrder->save();
-                    
+                    $PreorderdId = $preOrder->id;
+                    //echo "<pre>";print_r($PreorderdId);die;
+                   $instantId=ContactUs::create([
+                          'name'=>$request->name,
+                         'email'=>$request->email,
+                         'phone'=>$request->phone,
+                         'message'=>'New Pre Order  Application'
+
+
+                    ]);
+                    $instantId=$instantId->id;
+                     $values = array('admin_seen'=>0,'message' => 'New Pre Order  Application','contact_id'=>$instantId,'url'=>'/admin/details-preorder/'.$PreorderdId,'created_at'=>Carbon::now(),'updated_at'=>Carbon::now());
+                    DB::table('notifications')->insert($values);
 
          $dataDetails=array(
             'name'=>$request->name,
@@ -173,7 +187,7 @@ class FrontendController extends Controller
             $message->to('nafiz016@gmail.com')->subject("PreOrder Email ");
 
        });
-       return redirect()->back()->with('flash_message', 'Something is Wrong Now!');
+       return redirect()->back()->with('flash_message', 'Information has been sent Successfully');
        //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
        }
         return redirect()->back()->with('flash_message_warning', 'Something is Wrong Now!');
@@ -243,6 +257,18 @@ class FrontendController extends Controller
                     $truckrent->destination=$request->destination;
                     $truckrent->quoate=$request->quoate;
                     $truckrent->save();
+                    $truckrentId = $truckrent->id;
+                    $instantId=ContactUs::create([
+                          'name'=>$request->name,
+                         'email'=>$request->email,
+                         'phone'=>$request->phone,
+                         'message'=>'New Truck Rent Application'
+
+
+                    ]);
+                    $instantId=$instantId->id;
+                    $values = array('admin_seen'=>0,'message' => 'New Truck Rent Application','contact_id'=>$instantId,'url'=>'/admin/view-truck-rent','created_at'=>Carbon::now(),'updated_at'=>Carbon::now());
+                    DB::table('notifications')->insert($values);
                      //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
                     return redirect()->back()->with('flash_message','Your Informationmay has been sent   Successfully');
                     }else{
@@ -273,6 +299,7 @@ class FrontendController extends Controller
                     'phone' => 'required|min:2',
                     'company_address' => 'required|max:300',
                     'date' => 'required',
+                    'comment' => 'required|min:10|max:300',
                     
 
 
@@ -287,8 +314,20 @@ class FrontendController extends Controller
                    
 
                     $consultations->date=$request->date;
-                    
+                     $consultations->comment=$request->comment;
                     $consultations->save();
+
+                    $instantId=ContactUs::create([
+                          'name'=>$request->name,
+                         'email'=>$request->email,
+                         'phone'=>$request->phone,
+                         'message'=>'New Consultation  Application'
+
+
+                    ]);
+                    $instantId=$instantId->id;
+                      $values = array('admin_seen'=>0,'message' => 'New Consultation  Application','contact_id'=>$instantId,'url'=>'/admin/view-consultation','created_at'=>Carbon::now(),'updated_at'=>Carbon::now());
+                    DB::table('notifications')->insert($values);
                     //return Redirect::away('/thank-you')->with('flash_message','Successfully has been sent');
                     return redirect()->back()->with('flash_message','Your Pre-Order Informationmay has been sent Successfully');
                     }else{
@@ -368,6 +407,11 @@ class FrontendController extends Controller
 
 
     //add testimonial
+    public function testimonial(Request $request){
+       $testimonials= Testimonial::all();
+       return view('frontend_layout.testimonial.add_testimonial')->with(compact('testimonials'));
+
+    }
 
     public function addTestimonial(Request $request){
 
@@ -406,6 +450,7 @@ class FrontendController extends Controller
             $testimonial->details=$request->details;
             $testimonial->status=0;
            $testimonial->save();
+
            //return redirect()->b
             return redirect()->back()->with('flash_message','Your valuable information add comming soon');
 
@@ -469,7 +514,17 @@ class FrontendController extends Controller
                     $scrap->comment=$request->comment;
                     
                     $scrap->save();
-                    echo "done";
+                     $instantId=ContactUs::create([
+                          'name'=>$request->name,
+                         'email'=>$request->email,
+                         'phone'=>$request->phone,
+                         'message'=>'New scrap  Application'
+
+
+                    ]);
+                    $instantId=$instantId->id;
+                    $values = array('admin_seen'=>0,'message' => 'New scrap  Application','contact_id'=>$instantId,'url'=>'/admin/view-scarp','created_at'=>Carbon::now(),'updated_at'=>Carbon::now());
+                    DB::table('notifications')->insert($values);
 
                      $dataDetails=array(
             'name'=>$request->name,
@@ -484,6 +539,8 @@ class FrontendController extends Controller
             'comment'=>$request->comment
 
       );
+
+
        Mail::send('frontend_layout.contact.scrap_mail',$dataDetails,function($message)use($dataDetails){
             $message->from($dataDetails['email']);
             $message->to('nafiz016@gmail.com')->subject("Scrap Email ");
@@ -574,6 +631,18 @@ class FrontendController extends Controller
           'product_id'=>$request->product_id,
           'created_at'=>Carbon::now()
           ]);
+
+          $instantId=ContactUs::create([
+                          'name'=>$request->name,
+                         'email'=>$request->email,
+                         'phone'=>$request->phone,
+                         'message'=>'New Inquriy  Application'
+
+
+                    ]);
+                    $instantId=$instantId->id;
+           $values = array('admin_seen'=>0,'message' => 'New Inquriy  Application','contact_id'=>$instantId,'url'=>'/admin/view-inquery','created_at'=>Carbon::now(),'updated_at'=>Carbon::now());
+                    DB::table('notifications')->insert($values);
           //return Redirect::away('/thank-you')->with('flash_message','Your Inquriy has been sent Successfully');
           return redirect()->back()->with('flash_message','Your Inquriy has been sent Successfully');
 

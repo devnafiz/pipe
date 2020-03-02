@@ -28,6 +28,12 @@ Add Delivery Tracking
                 </div>
               </div>
               <div class="form-group">
+                <label class="control-label"> Email</label>
+                <div class="controls">
+                  <input type="email" name="email" id="email" class="form-control" >
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="control-label">Company Name</label>
                 <div class="controls">
                   <input type="text" name="company_name" id="company_name" class="form-control" >
@@ -56,7 +62,7 @@ Add Delivery Tracking
               <div class="form-group">
                 <label class="control-label">Product Description</label>
                 <div class="controls">
-                  <textarea id='' name="product_description" class="form-control">
+                  <textarea id='product_description' name="product_description" class="form-control">
                   
                   </textarea>
                 </div>
@@ -81,7 +87,7 @@ Add Delivery Tracking
                 </div>
               </div>
               <div class="form-actions">
-                <input type="submit" value="Add Tracking" class="btn btn-success">
+                <input type="submit" value="Add Tracking" id="submit" class="btn btn-success Tracking">
               </div>
             </form>
 
@@ -101,4 +107,90 @@ Add Delivery Tracking
 <script src="{{asset('back_end/js/editorDemo.js')}}"></script>
 <script src="{{asset('back_end/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
 <script src="../../"></script>
+ <script type="text/javascript">
+    
+
+
+$(document).ready(function(){
+
+  // $("#add_delivery_tracking").validate({
+
+  //        rules:{
+  //               name:{
+  //                 required:true,
+  //                 minLength:2,
+  //                 lettersonly:true
+  //               },
+  //               email:'required',
+  //               company_name:'required',
+  //               tracking_number:{
+  //                 required:true
+  //               },
+  //               product_description:{
+  //                 required:true
+  //               },
+  //               delivery_date:{
+  //                 required:true,
+                 
+  //               }
+                 
+
+  //        },
+  //        messages:{
+  //                 name:"Please Inter  Name",
+  //                 email:"Please Inter Email",
+                  
+  //                 tracking_number:"Please Inter Tracking Code",
+  //                 company_name:"Please Inter Company Name",
+  //                 product_description:"Please Inter Product Add description",
+  //                 delivery_date:"Please Inter Delivery Date"
+
+                 
+
+  //        }
+  //   //      errorClass: "help-inline",
+  //   // errorElement: "span",
+  //   // highlight:function(element, errorClass, validClass) {
+  //   //   $(element).parents('.control-group').addClass('error');
+  //   // },
+  //   // unhighlight: function(element, errorClass, validClass) {
+  //   //   $(element).parents('.control-group').removeClass('error');
+  //   //   $(element).parents('.control-group').addClass('success');
+  //   // }
+  // });
+
+
+  
+});
+
+$(document).ready(function() {
+// $(function() {
+// $("#add_delivery_tracking").dialog({
+// autoOpen: false
+// });
+// $(".Tracking").on("click", function() {
+// $("#add_delivery_tracking").dialog("open");
+// });
+// });
+// Validating Form Fields.....
+$("#submit").click(function(e) {
+  //alert('hi');
+  var name = $("#name").val();
+var email = $("#email").val();
+
+var emailReg = /^([w-.]+@([w-]+.)+[w-]{2,4})?$/;
+if (email === '' || name === '') {
+alert("Please fill all fields...!!!!!!");
+e.preventDefault();
+} else if (!(email).match(emailReg)) {
+alert("Invalid Email...!!!!!!");
+e.preventDefault();
+} else {
+alert("Form Submitted Successfully......");
+}
+});
+});
+   </script>
+<!-- <script src="{{ asset('back_end/vendors/jquery-validation/jquery.validate.min.js')}}"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 @endsection

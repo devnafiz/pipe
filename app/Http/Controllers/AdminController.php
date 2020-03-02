@@ -12,7 +12,7 @@ use App\ContactUs;
 use Mail;
 use App\NewsLetter;
 use App\Scrap;
-
+use DB;
 
 class AdminController extends Controller
 {
@@ -61,6 +61,8 @@ class AdminController extends Controller
                     $admin= new Admin;
                       $admin->type=$data['type'];
                       $admin->username=$data['username'];
+                      $admin->name=$data['name'];
+                      $admin->email=$data['email'];
                       $admin->password=md5($data['password']);
                       $admin->status=$data['status'];
                       $admin->save();
@@ -81,12 +83,29 @@ class AdminController extends Controller
                     $admin= new Admin;
                     $admin->type=$data['type'];
                     $admin->username=$data['username'];
+                    $admin->name=$data['name'];
+                    $admin->email=$data['email'];
                     $admin->password=md5($data['password']);
                     $admin->status=$data['status'];
                     $admin->gallery_access=$data['gallery_access'];
                     $admin->page_access=$data['page_access'];
                     $admin->products_access=$data['products_access'];
                     $admin->save();
+
+                    $dataDetails=array(
+            'username'=>$request->username,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'type'=>$request->type,
+            'password'=>$request->password
+            
+
+      );
+       Mail::send('admin.contact.admin_mail',$dataDetails,function($message)use($dataDetails){
+            $message->from('nafiz016@gmail.com');
+            $message->to($dataDetails['email'])->subject("Now you are new Admin ");
+
+       });
                      return redirect()->back()->with('flash_message_success','Successfully Add New Sub Admin');
 
 
@@ -109,7 +128,7 @@ class AdminController extends Controller
             }
             if($data['type']=="Admin"){
                     
-                      Admin::where('usernmae',$data['username'])->update(['type'=>$data['type'],'username'=>$data['username'],'password'=>md5($data['password']),'status'=>$data['status']]);
+                      Admin::where('usernmae',$data['username'])->update(['type'=>$data['type'],'username'=>$data['username'],'name'=>$data['name'],'email'=>$data['email'],'password'=>md5($data['password']),'status'=>$data['status']]);
 
                       return redirect()->back()->with('flash_message_success','Successfully Updated   Admin');
 
@@ -125,7 +144,7 @@ class AdminController extends Controller
                     }
 
                    
-                    Admin::where('username',$data['username'])->update(['type'=>$data['type'],'username'=>$data['username'],'password'=>md5($data['password']),'status'=>$data['status'],'gallery_access'=>$data['gallery_access'],'page_access'=>$data['page_access'],'products_access'=>$data['products_access']]);
+                    Admin::where('username',$data['username'])->update(['type'=>$data['type'],'username'=>$data['username'],'name'=>$data['name'],'email'=>$data['email'],'password'=>md5($data['password']),'status'=>$data['status'],'gallery_access'=>$data['gallery_access'],'page_access'=>$data['page_access'],'products_access'=>$data['products_access']]);
                      return redirect()->back()->with('flash_message_success','Successfully Updated Sub Admin');
 
 
@@ -238,6 +257,19 @@ class AdminController extends Controller
        Scrap::where('id',$id)->delete();
 
        return redirect()->back()->with('flash_message','Scrap has been Deleted!');
+
+     }
+     // view inquery
+     public function viewInquery(Request $request){
+      $inqueryView=DB::table('inquery')->latest()->get();
+      //print_r($inqueryView);
+      return view('admin.inquery.view_inquery')->with(compact('inqueryView'));
+
+     }
+      public function delInquery($id){
+       DB::table('inquery')->where('id',$id)->delete();
+
+       return redirect()->back()->with('flash_message','Inquery has been Deleted!');
 
      }
 }

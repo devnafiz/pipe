@@ -152,11 +152,17 @@
 	<!--Sponsors Section-->
      <section class="sponsors-section" style="background-image:url(images/background/1.jpg);">
         <div class="auto-container">
+
+            <div class="sec-title centered">
+                <h2>Product</h2>
+            </div>
             <div class="carousel-outer">
                 <!--Sponsors Slider-->
                 <ul class="sponsors-carousel owl-carousel owl-theme">
-                    <li><div class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></div></li>
-                    <li><div class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></div></li>
+                    @foreach($products as $product)
+                    <li><div class="image-box" style="width: 186px;height: 122px;" ><a href="#"><img src="{{asset('/images/backend_image/products/large/'.$product->image)}}" alt="" width="144px" height="80px"></a></div></li>
+                    @endforeach
+                    <!-- <li><div class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></div></li>
                     <li><div class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></div></li>
                     <li><div class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></div></li>
                     <li><div class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></div></li>
@@ -164,7 +170,7 @@
                     <li><div class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></div></li>
                     <li><div class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></div></li>
                     <li><div class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></div></li>
-                    <li><div class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></div></li>
+                    <li><div class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></div></li> -->
                 </ul>
             </div>
         </div>

@@ -32,24 +32,7 @@ Edit Gallery
                 </div>
               </div>
               
-              <div class="form-group">
-                <label class="control-label">location</label>
-                <div class="controls">
-                  <input type="text" name="location" id="location" class="form-control" value="{{$galleryDetails->location}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label">Projet Value</label>
-                <div class="controls">
-                  <input type="text" name="project_value" id="project_value" class="form-control" value="{{$galleryDetails->project_value}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label">Completed</label>
-                <div class="controls">
-                  <input type="text" name="completed" id="completed" class="form-control" value="{{$galleryDetails->completed}}">
-                </div>
-              </div>
+              
 
               <div class="form-group">
                 <label class="control-label">Description</label>

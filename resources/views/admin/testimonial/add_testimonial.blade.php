@@ -2,54 +2,45 @@
 
 
 @section('title')
-Add Gallery
-@endsection
-@section('extra-css')
- <link rel="stylesheet" href="{{asset('back_end/vendors/quill/quill.snow.css')}}">
- <link rel="stylesheet" href="{{asset('back_end/vendors/summernote/dist/summernote-bs4.css')}}">
 
 @endsection
+
 
 @section('content')
 
    <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title"> Add gallery Content</h4>
+                  <h4 class="card-title"> Add Testimonial</h4>
 
-                   <form class="form-horizontal forms-sample" method="post" action="{{url('/admin/add-gallery')}}" name="add_gallery" id="add_gallery" novalidate="novalidate" enctype="multipart/form-data">
+                   <form class="form-horizontal forms-sample" method="post" action="{{url('/admin/addTestimonial')}}" name="Testimonial" id="add_Testimonial" novalidate="novalidate" enctype="multipart/form-data">
             	{{ csrf_field()}}
               <div class="form-group">
                 <label class="control-label"> Name</label>
                 <div class="controls">
-                  <input type="text" name="client_name" id="client_name" class="form-control" required="required">
+                  <input type="text" name="name" id="name" class="form-control"  required="">
                 </div>
               </div>
-              <div class="form-group">
-                <label class="control-label">Enter Url</label>
-                <div class="controls">
-                  <input type="text" name="slug" id="slug" class="form-control" placeholder="Emp:-/new-job" >
-                </div>
-              </div>
-              
-              
-              
 
               <div class="form-group">
-                <label class="control-label">Description</label>
+                <label class="control-label"> Designation</label>
                 <div class="controls">
-                  <textarea id='tinyMceExample' name="content">
-                    Edit your content here...
-                  </textarea>
+                  <input type="text" name="designation" id="designation" class="form-control"  required="">
                 </div>
               </div>
-              
-              
-              
+
+               
+   
               <div class="form-group">
-                <label class="control-label">Image</label>
+                <label class="control-label">Choose your profile picture&nbsp</label>
                 <div class="controls">
-                  <input type="file" name="image" id="image" >
+                  <input type="file" name="image" id="image" required="" >
+                </div>
+              </div>
+               <div class="form-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  <textarea name="details" class="" ows="4" cols="85"></textarea>
                 </div>
               </div>
               <div class="form-group">
@@ -59,7 +50,8 @@ Add Gallery
                 </div>
               </div>
               <div class="form-actions">
-                <input type="submit" value="Add gallery" class="btn btn-success">
+                <input type="submit" value="Add Testimonial" class="btn btn-success" style="background-color: #16c4c1;">
+                 <a href="{{url('admin/testimonial-list')}}" class="btn btn-primary" style="background-color: #16c4c1;">Back </a>
               </div>
             </form>
 
@@ -73,29 +65,23 @@ Add Gallery
 
 
 @section('extra-js')
-<script src="{{asset('back_end/vendors/summernote/dist/summernote-bs4.min.js')}}"></script>
-<script src="{{asset('back_end/vendors/tinymce/tinymce.min.js')}}"></script>
-<script src="{{asset('back_end/vendors/quill/quill.min.js')}}"></script>
-<script src="{{asset('back_end/js/editorDemo.js')}}"></script>
-<script src="{{asset('back_end/js/form-validation.js')}}"></script>
-<script src="{{asset('back_end/js/editorDemo.js')}}"></script>
-<script type="text/javascript">
+   <script type="text/javascript">
     
 
 
 $(document).ready(function(){
 
-  $("#add_gallery").validate({
+  $("#add_Testimonial").validate({
 
          rules:{
-                client_name:{
+                name:{
                   required:true,
                   minLength:2,
                   lettersonly:true
                 },
-                slug:'required',
+                designation:'required',
                 
-                content:{
+                details:{
                   required:true
                 },
                 
@@ -106,13 +92,12 @@ $(document).ready(function(){
 
          },
          messages:{
-                  client_name:"Please Inter  Name",
-                  slug:"Please Inter Url",
+                  name:"Please Inter  Name",
+                  designation:"Please Inter Designation",
                   image:"Please Inter Product Image",
-                  
-                  content:"Please Inter Product Description",
-                  
                  
+                  details:"Please Inter Product Description"
+                  
 
                  
 
@@ -133,6 +118,5 @@ $(document).ready(function(){
 });
    </script>
 <script src="{{ asset('back_end/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
-
 
 @endsection

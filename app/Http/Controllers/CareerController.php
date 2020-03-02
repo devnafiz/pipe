@@ -15,7 +15,18 @@ class CareerController extends Controller
      		if(empty($data['status'])){
      			$data['status']=0;
      		}
-
+                $validator=Validator::make($request->all(),[
+           'job_title' => 'required|max:255',
+           
+           'vacancy_no'=>'required',
+           'job_requirement'=>'required|max:700',
+            'skill'=>'required',
+            'valid_date'=>'required',
+            'job_description'=>'required'
+            
+            
+           ]);
+              if($validator->passes()){
      		$careers= new Career;
      		$careers->job_title= $data['job_title'];
      		$careers->job_description= $data['job_description'];
@@ -26,7 +37,11 @@ class CareerController extends Controller
      		$careers->status= $data['status'];
      		$careers->save();
      		return redirect()->back()->with('flash_message','Job has been Added successfully');
+          }else{
+             return redirect()->back()->with('flash_message','Job Information not valid!');  
+          }
      	}
+
 
      	return view('admin.career.add_job');
      }

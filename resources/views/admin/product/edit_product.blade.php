@@ -11,7 +11,7 @@
    <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Banner Upload</h4>
+                  <h4 class="card-title">Product Update</h4>
 
                    <form class="form-horizontal forms-sample" method="post" action="{{url('/admin/edit-product/'.$productDetails->id)}}" name="add_product" id="edit_product" novalidate="novalidate" enctype="multipart/form-data">
             	{{ csrf_field()}}
@@ -22,7 +22,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label">Product url</label>
+                <label class="control-label">Product Url</label>
                 <div class="controls">
                   <input type="text" name="slug" id="slug" class="form-control" value="{{$productDetails->slug}}" >
                 </div>
@@ -34,12 +34,7 @@
                   <input type="text" name="product_code" id="product_code" class="form-control" value="{{$productDetails->product_code}}">
                 </div>
               </div>
-              <div class="form-group">
-                <label class="control-label">product Color</label>
-                <div class="controls">
-                  <input type="text" name="product_color" id="product_color" class="form-control" value="{{$productDetails->product_color}}">
-                </div>
-              </div>
+             
               <div class="form-group">
                 <label class="control-label">Description</label>
                 <div class="controls">
@@ -55,7 +50,7 @@
               </div>
               
               <div class="form-group">
-                <label class="control-label">product price</label>
+                <label class="control-label">Product Price</label>
                 <div class="controls">
                   <input type="text" name="price" id="price" class="form-control" value="{{$productDetails->price}}">
                 </div>

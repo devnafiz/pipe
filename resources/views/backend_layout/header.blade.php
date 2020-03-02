@@ -134,18 +134,20 @@
                    @if($notfy->admin_seen==0)
 
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item notification" rel1="seen-notification" style="background-color: #96e2e4" rel="{{$notfy->id}}">
+              <a class="dropdown-item preview-item notification" rel1="seen-notification" style="background-color: #96e2e4" rel="{{$notfy->id}}" href="{{$notfy->url}}">
                 <!-- <div class="preview-thumbnail">
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image" class="profile-pic">
                 </div> -->
                 <div class="preview-item-content flex-grow">
-                  <?php $contactDetails=DB::table('contactus')->where('id',$notfy->contact_id)->first(); ?>
-                  <h6 class="preview-subject ellipsis font-weight-medium" style="max-width: 265px;">{{$contactDetails->name}}
+                  <?php $contactDetails=DB::table('contactus')->where('id',$notfy->contact_id)->get(); ?>
+                   @foreach ($contactDetails as $contact)
+                  <h6 class="preview-subject ellipsis font-weight-medium" style="max-width: 265px;">{{$contact->name}}
                     <span class="float-right font-weight-light small-text"> {{ \Carbon\Carbon::parse($notfy->created_at)->diffForHumans() }}</span>
                   </h6>
                   <p class="font-weight-light small-text">
-                   Mobile:{{$contactDetails->phone}}&nbsp Email:{{$contactDetails->email}}
+                   Mobile:{{$contact->phone}}&nbsp Email:{{$contact->email}}
                   </p>
+                  @endforeach
                 </div>
               </a>
               <div class="dropdown-divider"></div>
@@ -156,13 +158,15 @@
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image" class="profile-pic">
                 </div> -->
                 <div class="preview-item-content flex-grow">
-                  <?php $contactDetails=DB::table('contactus')->where('id',$notfy->contact_id)->first(); ?>
-                  <h6 class="preview-subject ellipsis font-weight-medium" style="max-width: 265px;">{{$contactDetails->name}}
+                  <?php $contactDetails=DB::table('contactus')->where('id',$notfy->contact_id)->get(); ?>
+                   @foreach ($contactDetails as $contact)
+                  <h6 class="preview-subject ellipsis font-weight-medium" style="max-width: 265px;">{{$contact->name}}
                     <span class="float-right font-weight-light small-text"> {{ \Carbon\Carbon::parse($notfy->created_at)->diffForHumans() }}</span>
                   </h6>
                   <p class="font-weight-light small-text">
-                   Mobile:{{$contactDetails->phone}}&nbsp Email:{{$contactDetails->email}}
+                   Mobile:{{$contact->phone}}&nbsp Email:{{$contact->email}}
                   </p>
+                  @endforeach
                 </div>
               </a>
               <div class="dropdown-divider"></div>

@@ -12,5 +12,5 @@ User phone: {{ $phone }}
 </p>
  
 <p>
-Message provided: {{ $user_message }}
+Message provided: {{ $comment }}
 </p>

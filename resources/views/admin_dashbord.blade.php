@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="{{ asset('back_end/vendors/font-awesome/css/font-awesome.min.css')}}" />
   <link rel="stylesheet" href="{{ asset('back_end/vendors/jquery-bar-rating/fontawesome-stars.css')}}">
   <!-- End plugin css for this page -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('back_end/css/style.css')}}">
   <!-- endinject -->
@@ -165,13 +167,16 @@
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image" class="profile-pic">
                 </div> -->
                 <div class="preview-item-content flex-grow">
-                  <?php $contactDetails=DB::table('contactus')->where('id',$notfy->contact_id)->first(); ?>
-                  <h6 class="preview-subject ellipsis font-weight-medium" style="max-width: 265px;">{{$contactDetails->name}}
+                  <?php  $contactDetails=DB::table('contactus')->where('id',$notfy->contact_id)->get(); ?>
+                  @foreach ($contactDetails as $contact)
+                  <?php // $contactDetails;?>
+                  <h6 class="preview-subject ellipsis font-weight-medium" style="max-width: 265px;"> {{$contact->name}}
                     <span class="float-right font-weight-light small-text"> {{ \Carbon\Carbon::parse($notfy->created_at)->diffForHumans() }}</span>
                   </h6>
                   <p class="font-weight-light small-text">
-                   Mobile:{{$contactDetails->phone}}&nbsp Email:{{$contactDetails->email}}
+                   Mobile:{{$contact->phone}}&nbsp Email:{{$contact->email}}
                   </p>
+                  @endforeach
                 </div>
               </a>
               <div class="dropdown-divider"></div>
@@ -674,6 +679,7 @@
   <script src="{{ asset('back_end/js/misc.js')}}"></script>
   <script src="{{ asset('back_end/js/settings.js')}}"></script>
   <script src="{{ asset('back_end/js/todolist.js')}}"></script>
+  <script src="{{asset('back_end/js/custom.js')}}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{ asset('back_end/js/dashboard.js')}}"></script>

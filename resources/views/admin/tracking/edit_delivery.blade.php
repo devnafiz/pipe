@@ -19,12 +19,18 @@ Add Delivery Tracking
                 <div class="card-body">
                   <h4 class="card-title"> Add Delivery  Content</h4>
 
-                   <form class="form-horizontal forms-sample" method="post" action="{{url('/admin/edit-delivery-tracking'.$deliveryDeatails->id)}}" name="add_delivery_tracking" id="add_delivery_tracking" novalidate="novalidate" enctype="multipart/form-data">
+                   <form class="form-horizontal forms-sample" method="post" action="{{url('/admin/edit-delivery-tracking/'.$deliveryDeatails->id)}}" name="add_delivery_tracking" id="add_delivery_tracking" novalidate="novalidate" enctype="multipart/form-data">
             	{{ csrf_field()}}
               <div class="form-group">
                 <label class="control-label"> Name</label>
                 <div class="controls">
                   <input type="text" name="name" id="name" class="form-control" value="{{$deliveryDeatails->name}}" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label"> Email</label>
+                <div class="controls">
+                  <input type="email" name="email" id="email" class="form-control" value="{{$deliveryDeatails->email}}" >
                 </div>
               </div>
               <div class="form-group">
@@ -45,7 +51,10 @@ Add Delivery Tracking
                 <div class="controls">
                  <select name="status_position" id="status_position" class="form-control">
                     @if($deliveryDeatails->status_position)
-                      <option value="{{$deliveryDeatails->status_position}} " selected> @if($deliveryDeatails->status_position=='in_the_factory') In the factory @elseif($deliveryDeatails->status_position=='loading')Loading @elseif($deliveryDeatails->status_position=='ready_for_delivery')Ready For Delivery @elseif($deliveryDeatails->status_position=='out_factory') Out Form The Factory @endif </option>
+                      <option value="in_the_factory "@if(old('status_position',$deliveryDeatails->status_position) == 'in_the_factory') selected @endif >In the factory </option>
+                      <option value="loading" @if(old('status_position',$deliveryDeatails->status_position) == 'loading') selected @endif>Loading</option>
+                      <option value="ready_for_delivery" @if(old('status_position',$deliveryDeatails->status_position) == 'ready_for_delivery') selected @endif>Ready For Delivery</option>
+                      <option value="out_factory "  @if(old('status_position',$deliveryDeatails->status_position) == 'out_factory') selected @endif>Out Form The Factory </option>
 
                     @else  
                       <option value="in_the_factory ">In the factory </option>
@@ -62,14 +71,14 @@ Add Delivery Tracking
                 <label class="control-label">Product Description</label>
                 <div class="controls">
                   <textarea id='' name="product_description" class="form-control">
-                  
+                  {{$deliveryDeatails->product_description}}
                   </textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label">Delivery Date</label>
                 <div class="controls">
-                  <input type="text" name="delivery_date" id="datepicker-popup" class="form-control date datepicker">
+                  <input type="text" name="delivery_date" id="datepicker-popup" class="form-control date datepicker" value="{{$deliveryDeatails->delivery_date}}">
 
                 </div>
               </div>
@@ -82,7 +91,7 @@ Add Delivery Tracking
               <div class="form-group">
                 <label class="control-label">Enable </label>
                 <div class="controls">
-                  <input type="checkbox" name="status" id="status" value="1">
+                  <input type="checkbox" name="status" id="status" value="1" @if($deliveryDeatails->status=='1') checked @endif>
                 </div>
               </div>
               <div class="form-actions">

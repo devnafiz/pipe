@@ -3,7 +3,7 @@
 
 @section('title')
 
-Delivery List
+Inquery List
 
 @endsection
 
@@ -19,7 +19,7 @@ Delivery List
 
  <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Gallery list</h4>
+              <h4 class="card-title">Pre Order list</h4>
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
@@ -28,32 +28,32 @@ Delivery List
                         <tr>
                             <th>Id #</th>
                             <th>Name</th>
-                            <th>Company Name</th>
-                            <th>Tracking Number</th>
-                            <th>Status Position</th>
-                            <th>Product Description</th>
-                            <th>Delivery Date</th>
-                            <th>Status</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th> Company Address</th>
+                            <th>Description</th>
+                            <th>Product Name</th>
                             
                             <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
-                         @foreach($deliveryDeatails as $delivery)
+                         @foreach($inqueryView as $inquery)
                         <tr>
-                            <td>{{$delivery->id}}</td>
-                            <td>{{$delivery->name}}</td>
-                            <td>{{$delivery->company_name}}</td>
-                            <td>{{$delivery->tracking_number}}</td>
-                            <td>{{$delivery->status_position}}</td>
-                            <td>{{$delivery->product_description}}</td>
-                            <td>{{$delivery->delivery_date}}</td>
-                            <td>@if($delivery->status==1) Active @else Inactive @endif</td>
+                            <td>{{$inquery->id}}</td>
+                            <td>{{$inquery->name}}</td>
+                            <td>{{$inquery->email}}</td>
+                            <td>{{$inquery->phone}}</td>
+                            <td>{{$inquery->company_address}}</td>
+                            <td>{{$inquery->description}}</td>
+                            <td><?php $product_name=DB::table('contactus')->where('id',$inquery->product_id)->first(); ?>{{$product_name}}</td>
+                            
+                            
                             
                             
                             <td>
-                                 <button class="btn btn-outline-primary"><a href="{{url('/admin/edit-delivery-tracking/'.$delivery->id)}}"> <i class="fa fa-edit"></i></a></button>
-                             <a rel="{{$delivery->id}}"  rel1="delete-delivery" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delDelivery"><i class="fa fa-trash"></i></a>
+                             
+                             <a rel="{{$inquery->id}}"  rel1="delete-inquery" href="javascript:" class="deleteRecord btn btn-outline-primary" id="delDelivery"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

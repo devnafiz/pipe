@@ -74,6 +74,32 @@
               $(element).addClass('form-control-danger')
             }
         });
+
+         $("#add_gallery").validate({
+            rules: {
+                client_name: "required",
+                slug: "required",
+                 image:"required",
+                content: "required"
+            },
+            messages: {
+                client_name: "Please enter your Name",
+                slug: "Please enter your Url",
+               
+                
+               
+                image: "Please enter a Picture",
+                
+            },
+            errorPlacement: function(label, element) {
+              label.addClass('mt-2 text-danger');
+              label.insertAfter(element);
+            },
+            highlight: function(element, errorClass) {
+              $(element).parent().addClass('has-danger')
+              $(element).addClass('form-control-danger')
+            }
+        });
         // propose username by combining first- and lastname
         $("#username").focus(function() {
             var firstname = $("#firstname").val();
@@ -95,3 +121,35 @@
         });
     });
 })(jQuery);
+
+$(document).ready(function(){
+
+
+ $("#add_gallery").validate({
+            rules: {
+                client_name: "required",
+                slug: "required",
+                 image:"required",
+                content: "required"
+            },
+            messages: {
+                client_name: "Please enter your Name",
+                slug: "Please enter your Url",
+               
+                
+               
+                image: "Please enter a Picture",
+                
+            },
+            errorPlacement: function(label, element) {
+              label.addClass('mt-2 text-danger');
+              label.insertAfter(element);
+            },
+            highlight: function(element, errorClass) {
+              $(element).parent().addClass('has-danger')
+              $(element).addClass('form-control-danger')
+            }
+        });
+
+
+    });

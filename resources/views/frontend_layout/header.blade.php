@@ -83,7 +83,7 @@
                         <div class="upper-column info-box">
                         	<div class="icon-box"><span class="flaticon-technology-1"></span></div>
                             <ul>
-								<li>+880-184-3507 243 <br> sheikhtubemills@gmail.com</li>
+									<li>+880-184-3507 243 <br><span style="text-transform: lowercase;">sheikhtubemills@gmail.com</span> </li>
                             </ul>
                         </div>
                         
@@ -91,7 +91,7 @@
                         <div class="upper-column info-box">
                         	<div class="icon-box"><span class="flaticon-clock"></span></div>
                             <ul>
-								<li>10:00am to 6:00pm <br> Sunday Closed</li>
+								<li>10:00am to 6:00pm <br> Friday Closed</li>
                             </ul>
                         </div>
                         

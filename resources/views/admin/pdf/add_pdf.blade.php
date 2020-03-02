@@ -54,4 +54,60 @@
       </div>
 @endsection
 
+@section('extra-js')
+   <script type="text/javascript">
+    
 
+
+$(document).ready(function(){
+
+  $("#add_pdf").validate({
+
+         rules:{
+                pdf_name:{
+                  required:true,
+                  minLength:2,
+                  lettersonly:true
+                },
+                
+                
+                description:{
+                  required:true
+                },
+                
+               
+                 pdf_file:{
+                  required:true
+                }
+
+         },
+         messages:{
+                  pdf_name:"Please Inter Pdf Name",
+                 
+                  pdf_file:"Please Inter Pdf file",
+                 
+                  description:"Please Inter Pdf Description"
+                  
+                  
+
+                 
+
+         }
+    //      errorClass: "help-inline",
+    // errorElement: "span",
+    // highlight:function(element, errorClass, validClass) {
+    //   $(element).parents('.control-group').addClass('error');
+    // },
+    // unhighlight: function(element, errorClass, validClass) {
+    //   $(element).parents('.control-group').removeClass('error');
+    //   $(element).parents('.control-group').addClass('success');
+    // }
+  });
+
+
+  
+});
+   </script>
+<script src="{{ asset('back_end/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
+
+@endsection

@@ -20,6 +20,14 @@ Add  Admin
                       <input type="text" class="form-control" name="username" id="exampleInputName1" readonly="" value="{{$adminDetails->username}}">
                     </div>
                     <div class="form-group">
+                      <label for="exampleInputName1">Full Name</label>
+                      <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{$adminDetails->name}}" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Email</label>
+                      <input type="email" class="form-control" name="email" id="exampleInputName1" value="{{$adminDetails->email}}" required>
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputEmail3">Type</label>
                            <input type="text" class="form-control" name="type" id="exampleInputName1"  readonly="" value="{{$adminDetails->type}}">
                            

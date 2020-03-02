@@ -44,62 +44,26 @@ shop
     </div>
     <!--End Page Title-->
 	
-	<!--Case Section-->
-	 <section class="register-section " style="color:#fff;">
+	<section class="testimonial-page-section">
         <div class="auto-container">
-            <div class="row clearfix justify-content-md-center">
+            <div class="row clearfix">
                 
-                <!--Form Column-->
-               <!--  <div class="form-column column col-lg-8 col-md-8 col-sm-12 "> -->
-
-
-                	
-                        <div class="col-md-10 text-center">
-                            <div class="welcome_text">
-                            <form action="{{url('/add-testimonial')}}" method="post" id="Testimonial" enctype="multipart/form-data">
-                                {{csrf_field()}}
-                                    <div class="input-group form-group">
-                                       
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Name" required="">
-                                    </div>
-
-                                    <div class="input-group form-group">
-                                       
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                                    </div>
-
-                                    <div class="input-group form-group">
-                                       
-                                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number">
-                                    </div>
-                                    <div class="input-group form-group">
-                                       
-                                        <input type="text" name="company_name" id="company_name" class="form-control" placeholder="Company Name " required="">
-                                    </div>
-                                    
-                                     <div class="input-group form-group" style="color: black;">
-                                       <span>Choose your profile picture&nbsp</span> 
-                                       <input type="file" name="image" placeholder="Company Name " required="">
-
-                                    </div>
-                                    <div class="input-group form-group">
-                                       
-                                       <textarea name="details" class="" ows="4" cols="140" style="border: 1px solid #13b5ea">Enter Details...... 
-                                          
-                                       </textarea>
-                                    </div>
-                                    
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn  btn-block  " style="background:#13b5ea ">Submit</button>
-                                    </div>
-
-                            </form>
-
+               <!--Testimonial Block Two-->
+               @foreach($testimonials as $testimonial)
+                <div class="testimonial-block-two col-md-6 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <div class="text">{{ $testimonial->details}}</div>
+                        <div class="author-box">
+                            <div class="inner">
+                                <div class="image"><img src="{{asset('images/backend_image/testimonial/small/'.$testimonial->image)}}" alt="" /></div>
+                                <h5>{{ $testimonial->name}}</h5>
+                                <div class="designation">Chairman of nova appartment</div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                @endforeach
                 
-              
                 
             </div>
         </div>

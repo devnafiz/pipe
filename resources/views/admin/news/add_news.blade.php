@@ -49,7 +49,7 @@ Add News
                <div class="form-group">
                 <label class="control-label">Enter Image</label>
                 <div class="controls">
-                  <input type="file" name="image"  class="form-control" >
+                  <input type="file" name="image"  id="image" class="form-control" >
                 </div>
               </div>
 
@@ -87,4 +87,61 @@ Add News
 <script src="{{asset('back_end/vendors/tinymce/tinymce.min.js')}}"></script>
 <script src="{{asset('back_end/vendors/quill/quill.min.js')}}"></script>
 <script src="{{asset('back_end/js/editorDemo.js')}}"></script>
+
+   <script type="text/javascript">
+    
+
+
+$(document).ready(function(){
+
+  $("#add_news").validate({
+
+         rules:{
+                title:{
+                  required:true,
+                  minLength:2,
+                  lettersonly:true
+                },
+               
+               
+                description:{
+                  required:true
+                },
+                
+                 image:{
+                  required:true
+                }
+
+         },
+         messages:{
+                  title:"Please Inter News Title",
+                 
+                  image:"Please Inter Product Image",
+                 
+                  description:"Please Inter Product Description"
+                 
+
+                 
+
+         }
+    //      errorClass: "help-inline",
+    // errorElement: "span",
+    // highlight:function(element, errorClass, validClass) {
+    //   $(element).parents('.control-group').addClass('error');
+    // },
+    // unhighlight: function(element, errorClass, validClass) {
+    //   $(element).parents('.control-group').removeClass('error');
+    //   $(element).parents('.control-group').addClass('success');
+    // }
+  });
+
+
+  
+});
+   </script>
+<script src="{{ asset('back_end/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
+
+
+
 @endsection
+

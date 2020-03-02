@@ -81,7 +81,12 @@ shop
                                        
                                         <input type="text" name="date" class="form-control" placeholder="Consulting date:- 20-09-2019" required="">
                                     </div>
-                                    
+                                    <div class="input-group form-group">
+                                       
+                                       <textarea name="comment" class=""  rows="4" cols="140" style="border: 1px solid #13b5ea">
+                                          
+                                       </textarea>
+                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn  btn-block  " style="background:#13b5ea ">Submit</button>

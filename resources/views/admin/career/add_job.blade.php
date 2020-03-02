@@ -77,5 +77,66 @@
 
       </div>
 @endsection
+@section('extra-js')
+   <script type="text/javascript">
+    
 
+
+$(document).ready(function(){
+
+  $("#add_jobs").validate({
+
+         rules:{
+                job_title:{
+                  required:true,
+                  minLength:2,
+                  lettersonly:true
+                },
+                job_description:'required',
+                vacancy_no:'required',
+                description:{
+                  required:true
+                },
+                skill:{
+                  required:true
+                },
+                job_requirement:{
+                  required:true,
+                  number:true,
+                },
+                 valid_date:{
+                  required:true
+                }
+
+         },
+         messages:{
+                  job_title:"Please Inter Job Name",
+                  job_description:"Please Inter Job Description",
+                  valid_date:"Please Inter Date",
+                  vacancy_no:"Please Inter Vaccancy Number",
+                  description:"Please Inter Product Description",
+                  skill:"Please Inter Skill description",
+                  job_requirement:"Please Inter Job requirement"
+
+                 
+
+         }
+    //      errorClass: "help-inline",
+    // errorElement: "span",
+    // highlight:function(element, errorClass, validClass) {
+    //   $(element).parents('.control-group').addClass('error');
+    // },
+    // unhighlight: function(element, errorClass, validClass) {
+    //   $(element).parents('.control-group').removeClass('error');
+    //   $(element).parents('.control-group').addClass('success');
+    // }
+  });
+
+
+  
+});
+   </script>
+<script src="{{ asset('back_end/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
+
+@endsection
 

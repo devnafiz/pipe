@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pdfdownload;
 use Illuminate\Support\Facades\Input;
+use Mail;
+use Validator;
 
 
 class PdfController extends Controller
@@ -18,7 +20,15 @@ class PdfController extends Controller
          if(empty($data['status'])){
          	$data['status']=0;
          }
-
+          $validator=Validator::make($request->all(),[
+           'pdf_name' => 'required|max:255',
+           
+           'description'=>'required',
+           'pdf_file'=>'required',
+            
+            
+           ]);
+            if($validator->passes()){
          $pdfupload =new Pdfdownload;
          	$pdfupload->pdf_name= $data['pdf_name'];
          	$pdfupload->description= $data['description'];
@@ -43,7 +53,11 @@ class PdfController extends Controller
 
           return redirect()->back()->with('flash_message','Pdf upload successfully');
           
-           	}
+           	}else{
+
+            }
+          }
+
            	return view('admin.pdf.add_pdf');
      	}
 

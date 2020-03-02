@@ -43,7 +43,8 @@ Route::get('/details-career/{id}','FrontendController@detailsJob');
 Route::get('/pdf-download','FrontendController@viewPdf');
 Route::match(['get','post'],'/pdf-information/{id}','FrontendController@informationForPdf');
 //testimonial
-Route::match(['get','post'],'/add-testimonial','FrontendController@addTestimonial');
+//Route::match(['get','post'],'/add-testimonial','FrontendController@addTestimonial');
+Route::get('/testimonials','FrontendController@testimonial');
 
 //Thank you Page
 Route::get('/thank-you','FrontendController@thakyou');
@@ -160,7 +161,7 @@ Route::group(['middleware'=>['adminLogin']],function(){
        Route::get('/addmin/comments-Update-status/{id}/{status}','NewsController@updateNewsStatus');
 
       //testimonial
-
+      Route::match(['get','post'],'/admin/addTestimonial','TestimonialController@addTestimonial');
       Route::get('/admin/testimonial-list','TestimonialController@viewTestimonial');
       Route::get('/admin/delete-testimonial/{id}','TestimonialController@delTest');
       Route::get('/admin/update-testimonial-status/{id}/{status}','TestimonialController@updateTestimonialStatus');
@@ -168,8 +169,13 @@ Route::group(['middleware'=>['adminLogin']],function(){
       //scrap
       Route::get('/admin/view-scarp','AdminController@viewScrap');
       Route::get('/admin/delete-scrap/{id}','AdminController@delScrap');
-
-
+      //pre order
+       Route::get('/admin/view-pre-order','PreOrderController@viewOrder');
+      Route::get('/admin/delete-preorder/{id}','PreOrderController@delOrder');
+      Route::get('/admin/details-preorder/{id}','PreOrderController@singleOrder');
+      //inquery
+      Route::get('/admin/view-inquery','AdminController@viewInquery');
+      Route::get('/admin/delete-inquery/{id}','AdminController@delInquery');
 
 });
 
